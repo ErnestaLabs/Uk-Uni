@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | Paesani</title>
+  <meta name="description" content="Paesani Terms of Service — the terms governing use of our educational advisory service and referral programme.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0e1d47; --navy-mid: #183170; --ink: #09090f;
+      --gold: #c19a40; --gold-light: #e2b96a; --gold-pale: #fdf8ee;
+      --cream: #faf8f4; --g1: #f3f2ef; --g2: #e3e1db; --g3: #b0ada7;
+      --g4: #757168; --g5: #46443f; --green: #186640;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Figtree', system-ui, sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .nav {
+      background: rgba(250,248,244,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--g2); padding: 0.85rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .logo { font-family: var(--serif); font-size: 1.3rem; color: var(--navy); text-decoration: none; }
+    .nav-back { font-size: 0.855rem; font-weight: 600; color: var(--g4); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--navy); }
+
+    .doc-hero {
+      background: var(--navy); color: white;
+      padding: 4rem 2rem 3.5rem; text-align: center;
+    }
+    .doc-tag {
+      display: inline-block; font-size: 0.71rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gold-light); margin-bottom: 1rem;
+      border: 1px solid rgba(193,154,64,0.3); padding: 0.3rem 1rem;
+      border-radius: 100px; background: rgba(193,154,64,0.07);
+    }
+    .doc-hero h1 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      color: white; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .doc-meta {
+      font-size: 0.82rem; color: rgba(255,255,255,0.4);
+      display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+
+    .doc-layout {
+      max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem;
+      display: grid; grid-template-columns: 240px 1fr; gap: 4rem; align-items: start;
+    }
+    @media (max-width: 860px) { .doc-layout { grid-template-columns: 1fr; } .toc { display: none; } }
+
+    .toc {
+      position: sticky; top: 5rem;
+      background: white; border: 1px solid var(--g2); border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .toc-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--g3); margin-bottom: 1rem; }
+    .toc ol { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; counter-reset: toc; }
+    .toc li::before { counter-increment: toc; content: counter(toc) ". "; color: var(--gold); font-weight: 700; font-size: 0.8rem; }
+    .toc a { font-size: 0.8rem; color: var(--g4); text-decoration: none; transition: color 0.2s; line-height: 1.4; }
+    .toc a:hover { color: var(--navy); }
+
+    .doc-body { max-width: 720px; }
+    .doc-intro {
+      background: var(--gold-pale); border: 1px solid rgba(193,154,64,0.2);
+      border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 3rem;
+      font-size: 0.9rem; color: var(--g5); line-height: 1.8;
+    }
+    .doc-intro strong { color: var(--ink); }
+
+    .doc-section { margin-bottom: 3rem; scroll-margin-top: 6rem; }
+    .section-num {
+      font-size: 0.71rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--gold); display: block; margin-bottom: 0.5rem;
+    }
+    .doc-section h2 {
+      font-family: var(--serif); font-size: 1.6rem; color: var(--ink);
+      line-height: 1.15; margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--g2);
+    }
+    .doc-section h3 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin: 1.5rem 0 0.6rem; }
+    .doc-section p { font-size: 0.9rem; color: var(--g5); line-height: 1.82; margin-bottom: 1rem; }
+    .doc-section p strong { color: var(--ink); font-weight: 600; }
+    .doc-section ul, .doc-section ol { margin: 0.75rem 0 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .doc-section li { font-size: 0.9rem; color: var(--g5); line-height: 1.72; }
+    .doc-section li strong { color: var(--ink); font-weight: 600; }
+    .doc-section a { color: var(--navy-mid); }
+
+    .highlight-box {
+      background: var(--g1); border: 1px solid var(--g2); border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0; padding: 1.1rem 1.4rem; margin: 1rem 0;
+      font-size: 0.875rem; color: var(--g5); line-height: 1.72;
+    }
+    .highlight-box strong { color: var(--ink); }
+
+    .referral-terms {
+      background: white; border: 1.5px solid var(--g2); border-radius: 14px;
+      padding: 1.75rem; margin: 1rem 0;
+    }
+    .referral-terms h4 { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
+    .referral-terms ol { margin: 0 0 0 1.25rem; }
+
+    .contact-box {
+      background: var(--navy); color: white; border-radius: 14px;
+      padding: 2rem 2.25rem; margin-top: 1.5rem;
+    }
+    .contact-box h3 { font-family: var(--serif); font-size: 1.3rem; color: white; margin-bottom: 1rem; }
+    .contact-box p { font-size: 0.875rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 0.5rem; }
+    .contact-box a { color: var(--gold-light); text-decoration: none; }
+
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.35);
+      padding: 2.5rem 2rem; text-align: center;
+      font-size: 0.78rem; line-height: 1.85;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="logo">Paesani</a>
+    <a href="index.html" class="nav-back">← Back to Homepage</a>
+  </nav>
+
+  <div class="doc-hero">
+    <div class="doc-tag">Legal Document</div>
+    <h1>Terms of Service</h1>
+    <div class="doc-meta">
+      <span>Effective date: 1 June 2025</span>
+      <span>Last updated: 1 June 2025</span>
+      <span>Version: 1.0</span>
+    </div>
+  </div>
+
+  <div class="doc-layout">
+
+    <aside class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#t1">Definitions</a></li>
+        <li><a href="#t2">About Our Services</a></li>
+        <li><a href="#t3">Eligibility to Use</a></li>
+        <li><a href="#t4">Our Services</a></li>
+        <li><a href="#t5">No Guarantee of Outcome</a></li>
+        <li><a href="#t6">Your Obligations</a></li>
+        <li><a href="#t7">Referral Programme</a></li>
+        <li><a href="#t8">Intellectual Property</a></li>
+        <li><a href="#t9">Disclaimer of Warranties</a></li>
+        <li><a href="#t10">Limitation of Liability</a></li>
+        <li><a href="#t11">Indemnification</a></li>
+        <li><a href="#t12">Third-Party Services</a></li>
+        <li><a href="#t13">Termination</a></li>
+        <li><a href="#t14">Governing Law</a></li>
+        <li><a href="#t15">Changes to Terms</a></li>
+        <li><a href="#t16">Contact Us</a></li>
+      </ol>
+    </aside>
+
+    <main class="doc-body">
+
+      <div class="doc-intro">
+        <strong>Important:</strong> These Terms of Service ("Terms") govern your use of the Paesani website and advisory services. By accessing our website or submitting an enquiry, you agree to these Terms. Please read them carefully. These Terms do not affect your statutory rights.
+      </div>
+
+      <!-- 1 -->
+      <section class="doc-section" id="t1">
+        <span class="section-num">Section 1</span>
+        <h2>Definitions</h2>
+        <p>In these Terms, the following definitions apply:</p>
+        <ul>
+          <li><strong>"Paesani", "we", "us", "our"</strong> — the educational advisory service operated by Paesani [Company Name Ltd, registered in England and Wales, company number: XXXXXXXX].</li>
+          <li><strong>"Services"</strong> — the educational advisory services, eligibility assessments, application support, and referral programme provided by Paesani.</li>
+          <li><strong>"Website"</strong> — the website accessible at [paesani.co.uk] and any associated pages.</li>
+          <li><strong>"User", "you", "your"</strong> — any individual who accesses the Website or uses the Services.</li>
+          <li><strong>"Applicant"</strong> — a User who submits an eligibility enquiry or application for university enrolment.</li>
+          <li><strong>"Referrer"</strong> — a User who refers another individual to Paesani through the referral programme.</li>
+          <li><strong>"Referred Individual"</strong> — a person introduced to Paesani by a Referrer.</li>
+          <li><strong>"Partner Universities"</strong> — UK universities and higher education institutions with whom Paesani has a commercial relationship.</li>
+          <li><strong>"Student Finance England" or "SFE"</strong> — the government body responsible for administering financial support for higher education students in England.</li>
+        </ul>
+      </section>
+
+      <!-- 2 -->
+      <section class="doc-section" id="t2">
+        <span class="section-num">Section 2</span>
+        <h2>About Our Services</h2>
+        <p>Paesani is an independent educational advisory service. We assist individuals who may be eligible for government-funded university education in the United Kingdom to:</p>
+        <ul>
+          <li>Assess their eligibility for Student Finance England funding</li>
+          <li>Identify suitable degree programmes from our Partner Universities</li>
+          <li>Complete and submit university applications</li>
+          <li>Navigate the Student Finance England application process</li>
+        </ul>
+        <p><strong>Paesani is not:</strong></p>
+        <ul>
+          <li>A university or higher education institution</li>
+          <li>A representative or agent of the UK Government or Student Finance England</li>
+          <li>A financial adviser or regulated financial services firm</li>
+          <li>A law firm or provider of legal advice</li>
+        </ul>
+        <p>Paesani's eligibility assessments constitute general educational guidance only and do not constitute financial, legal, or immigration advice. For immigration status queries, please consult a regulated immigration adviser.</p>
+      </section>
+
+      <!-- 3 -->
+      <section class="doc-section" id="t3">
+        <span class="section-num">Section 3</span>
+        <h2>Eligibility to Use Our Services</h2>
+        <p>You must be aged 18 or over to use our Services. By using our Website or Services, you confirm that:</p>
+        <ul>
+          <li>You are at least 18 years of age</li>
+          <li>You have the legal capacity to enter into a contract under English law</li>
+          <li>The information you provide to us is accurate, complete, and not misleading</li>
+          <li>You are not using our Services on behalf of another person without their knowledge and consent</li>
+        </ul>
+        <p>Our Services are targeted at individuals residing in the United Kingdom. We do not represent that the Website or Services are appropriate for use in other jurisdictions.</p>
+      </section>
+
+      <!-- 4 -->
+      <section class="doc-section" id="t4">
+        <span class="section-num">Section 4</span>
+        <h2>Our Services</h2>
+
+        <h3>4.1 Free Eligibility Assessment</h3>
+        <p>We offer a free eligibility assessment to determine whether you are likely to qualify for Student Finance England funding. This assessment is based on the information you provide and does not constitute a binding determination. Final eligibility is determined solely by Student Finance England.</p>
+
+        <h3>4.2 Application Support</h3>
+        <p>We assist eligible individuals in completing applications to our Partner Universities and to Student Finance England. We act as an educational adviser and introducer. Acceptance decisions are made solely by the relevant university.</p>
+
+        <h3>4.3 Commercial Relationship with Universities</h3>
+        <p>Paesani receives a commercial fee from Partner Universities when an Applicant we refer successfully enrols. This fee is paid by the university and does not increase the cost of your education in any way. Our Services are provided to you at no direct charge.</p>
+
+        <h3>4.4 Service Availability</h3>
+        <p>We do not guarantee continuous, uninterrupted access to our Website or Services. We may suspend, withdraw, or modify Services at any time without liability, subject to reasonable notice where practicable.</p>
+      </section>
+
+      <!-- 5 -->
+      <section class="doc-section" id="t5">
+        <span class="section-num">Section 5</span>
+        <h2>No Guarantee of Outcome</h2>
+        <div class="highlight-box">
+          <strong>Important:</strong> Paesani does not and cannot guarantee that: (a) you will be assessed as eligible for Student Finance England funding; (b) any Partner University will accept your application; (c) you will successfully obtain a place on any particular course. All decisions rest with Student Finance England and the relevant university.
+        </div>
+        <p>Our eligibility assessments are provided in good faith based on information you provide and our understanding of current SFE eligibility rules, which are subject to change by the UK Government at any time.</p>
+      </section>
+
+      <!-- 6 -->
+      <section class="doc-section" id="t6">
+        <span class="section-num">Section 6</span>
+        <h2>Your Obligations</h2>
+        <p>When using our Website and Services, you agree to:</p>
+        <ul>
+          <li>Provide accurate, truthful, and complete information at all times</li>
+          <li>Notify us promptly of any material change in your circumstances that may affect your eligibility</li>
+          <li>Not submit false, fraudulent, or misleading information to us, Partner Universities, or Student Finance England</li>
+          <li>Not use the Website or Services for any unlawful purpose or in a manner that infringes the rights of others</li>
+          <li>Not use automated tools, bots, or scrapers to access the Website</li>
+          <li>Not attempt to interfere with the proper operation of the Website or our infrastructure</li>
+          <li>Comply with all applicable laws, including immigration law and the terms of any visa or leave to remain you hold</li>
+        </ul>
+        <p>You acknowledge that providing false information to Student Finance England is a criminal offence under the Fraud Act 2006. Paesani accepts no liability for consequences arising from misrepresentations you make.</p>
+      </section>
+
+      <!-- 7 -->
+      <section class="doc-section" id="t7">
+        <span class="section-num">Section 7</span>
+        <h2>Referral Programme</h2>
+
+        <div class="referral-terms">
+          <h4>Referral Programme — Full Terms</h4>
+          <ol>
+            <li style="margin-bottom:0.6rem;"><strong>Eligibility:</strong> Any individual aged 18 or over may participate in the Referral Programme.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Referral reward:</strong> A reward of <strong>£300 (three hundred pounds sterling)</strong> is payable to the Referrer upon the Referred Individual's successful enrolment at a Partner University with confirmed Student Finance England funding.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Qualifying conditions:</strong> All of the following conditions must be met for a referral to qualify: (a) the Referred Individual must be a new enquiry with no prior contact with Paesani; (b) the Referred Individual must be identifiably linked to the Referrer at the time of their first enquiry; (c) the Referred Individual must successfully enrol on a full academic year at a Partner University; (d) Student Finance England must have confirmed funding for the Referred Individual's first year of study.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Payment timing:</strong> Referral rewards are paid within 30 days of confirmation of the Referred Individual's enrolment and SFE funding confirmation. Payment is made by bank transfer to details provided by the Referrer.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Tax:</strong> The Referrer is solely responsible for any income tax or other tax liability arising from receipt of a referral reward. Paesani does not provide tax advice.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Self-referral:</strong> You may not refer yourself. You may not create multiple identities to generate referral payments.</li>
+            <li style="margin-bottom:0.6rem;"><strong>No limit:</strong> There is no cap on the number of qualifying referrals a single Referrer may make.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Discretion:</strong> Paesani reserves the right to withhold, delay, or reclaim referral payments in cases of suspected fraud, misrepresentation, or breach of these Terms.</li>
+            <li style="margin-bottom:0.6rem;"><strong>Modification:</strong> Paesani may modify or discontinue the Referral Programme at any time with 30 days' notice. Qualifying referrals made before the notice date will be honoured.</li>
+            <li><strong>No employment:</strong> Participation in the Referral Programme does not constitute an employment relationship, agency, or partnership between the Referrer and Paesani.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="doc-section" id="t8">
+        <span class="section-num">Section 8</span>
+        <h2>Intellectual Property</h2>
+        <p>All content on the Paesani Website — including text, graphics, logos, icons, images, audio clips, data compilations, and software — is owned by or licensed to Paesani and is protected by copyright, trademark, and other intellectual property laws.</p>
+        <p>You may access and use the Website for personal, non-commercial purposes only. You must not:</p>
+        <ul>
+          <li>Copy, reproduce, distribute, or modify any content from the Website without our prior written consent</li>
+          <li>Use Paesani's name, logo, or trademarks without express written permission</li>
+          <li>Frame or embed the Website on any other website or application</li>
+          <li>Use any Website content for commercial purposes without our authorisation</li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section class="doc-section" id="t9">
+        <span class="section-num">Section 9</span>
+        <h2>Disclaimer of Warranties</h2>
+        <p>The Website and Services are provided on an "as is" and "as available" basis. To the fullest extent permitted by law, Paesani disclaims all representations, warranties, and conditions — whether express, implied, or statutory — including but not limited to implied warranties of merchantability, fitness for a particular purpose, accuracy, and non-infringement.</p>
+        <p>We do not warrant that: (a) the Website will be uninterrupted, error-free, or free of viruses; (b) information on the Website is current, complete, or accurate; (c) our eligibility assessments will match the determinations of Student Finance England.</p>
+        <p>Nothing in these Terms excludes or limits our liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot be excluded or limited under English law.</p>
+      </section>
+
+      <!-- 10 -->
+      <section class="doc-section" id="t10">
+        <span class="section-num">Section 10</span>
+        <h2>Limitation of Liability</h2>
+        <p>Subject to clause 9 above, and to the fullest extent permitted by applicable law:</p>
+        <ul>
+          <li>Paesani's total aggregate liability to you arising out of or in connection with these Terms and our Services shall not exceed <strong>£500 (five hundred pounds sterling)</strong> or the total amount paid by you to Paesani in the preceding 12 months, whichever is greater.</li>
+          <li>Paesani shall not be liable for any <strong>indirect, consequential, incidental, special, or punitive damages</strong>, including loss of profits, loss of data, loss of revenue, loss of opportunity, or loss of goodwill, even if advised of the possibility of such damages.</li>
+          <li>Paesani shall not be liable for any outcomes of Student Finance England decisions, university admission decisions, or changes to government funding policy.</li>
+        </ul>
+        <p>If you are a consumer (as defined under the Consumer Rights Act 2015), these limitations do not affect your statutory rights under English consumer law.</p>
+      </section>
+
+      <!-- 11 -->
+      <section class="doc-section" id="t11">
+        <span class="section-num">Section 11</span>
+        <h2>Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless Paesani, its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising from:</p>
+        <ul>
+          <li>Your breach of these Terms</li>
+          <li>Your misuse of the Website or Services</li>
+          <li>Any false or misleading information you provide to Paesani, Partner Universities, or Student Finance England</li>
+          <li>Your violation of any applicable law or third-party rights</li>
+        </ul>
+      </section>
+
+      <!-- 12 -->
+      <section class="doc-section" id="t12">
+        <span class="section-num">Section 12</span>
+        <h2>Third-Party Services</h2>
+        <p>Our Website integrates third-party services including Typeform (application forms). Your use of such services is governed by their own terms and privacy policies, and Paesani accepts no liability for the acts or omissions of third-party service providers.</p>
+        <p>Links to third-party websites (including gov.uk, Student Finance England, and Partner University websites) are provided for convenience. We do not endorse, and are not responsible for, the content or practices of any linked third-party site.</p>
+      </section>
+
+      <!-- 13 -->
+      <section class="doc-section" id="t13">
+        <span class="section-num">Section 13</span>
+        <h2>Termination</h2>
+        <p>We reserve the right to suspend or terminate your access to our Services at any time, without notice, if we reasonably believe you have breached these Terms, engaged in fraudulent activity, or if required by law.</p>
+        <p>You may discontinue use of our Services at any time by ceasing to access the Website and contacting us to request deletion of your data in accordance with our Privacy Policy.</p>
+        <p>Termination does not affect any accrued rights or obligations, including outstanding referral rewards for qualifying referrals made prior to termination.</p>
+      </section>
+
+      <!-- 14 -->
+      <section class="doc-section" id="t14">
+        <span class="section-num">Section 14</span>
+        <h2>Governing Law &amp; Dispute Resolution</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of <strong>England and Wales</strong>. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+        <p>If you are a consumer resident in Scotland or Northern Ireland, you retain the right to bring proceedings in the courts of your country of residence.</p>
+        <p>We encourage you to contact us in the first instance to resolve any dispute informally. We aim to respond to all complaints within 5 business days.</p>
+      </section>
+
+      <!-- 15 -->
+      <section class="doc-section" id="t15">
+        <span class="section-num">Section 15</span>
+        <h2>Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. When we make material changes, we will post the updated Terms on this page with a revised "Last updated" date. For significant changes, we will provide 30 days' notice via email or a prominent website notice.</p>
+        <p>Your continued use of the Website or Services after the effective date of any changes constitutes acceptance of the revised Terms. If you do not agree to the revised Terms, you should cease using our Services.</p>
+      </section>
+
+      <!-- 16 -->
+      <section class="doc-section" id="t16">
+        <span class="section-num">Section 16</span>
+        <h2>Contact Us</h2>
+        <div class="contact-box">
+          <h3>Questions About These Terms?</h3>
+          <p>Email: <a href="mailto:hello@paesani.co.uk">hello@paesani.co.uk</a></p>
+          <p>Legal &amp; compliance: <a href="mailto:legal@paesani.co.uk">legal@paesani.co.uk</a></p>
+          <p>Post: Paesani, [Registered Address], United Kingdom</p>
+          <p style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.35);">Response time: within 5 business days.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">← Homepage</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:hello@paesani.co.uk">Contact Us</a>
+    </div>
+    <p>© 2025 Paesani. All rights reserved. Governed by English law.</p>
+  </footer>
+
+</body>
+</html>
