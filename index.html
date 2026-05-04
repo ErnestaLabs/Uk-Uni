@@ -252,21 +252,9 @@
       padding-top: 2.5rem;
       max-width: 600px; margin: 0 auto;
     }
-    .trust-strip {
-      background: linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(248,244,238,.96) 100%);
-      border-bottom: 1px solid var(--g2);
-      padding: .75rem 2rem;
-    }
-    .trust-strip-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: .75rem 1.5rem;
-      justify-content: center;
-    }
-    .trust-pill {
-      font-size: .72rem; font-weight: 700; color: var(--g5);
-      background: rgba(255,255,255,.9); border: 1px solid var(--g2);
-      border-radius: 100px; padding: .38rem .85rem;
-    }
+    .trust-strip { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); padding: .45rem 2rem; }
+    .trust-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .45rem 1rem; justify-content: center; }
+    .trust-pill { font-size: .66rem; font-weight: 600; color: var(--g4); }
     .qualifier { font-size: .72rem; color: var(--g4); font-weight: 600; }
     .hero-stat {
       flex: 1; text-align: center;
@@ -526,19 +514,8 @@
       font-size: .875rem; color: var(--g5); line-height: 1.75;
     }
     .fund-note strong { color: var(--ink); }
-    .difference { padding: 2.2rem 2rem .75rem; background: var(--white); }
-    .difference-box {
-      max-width: 900px; margin: 0 auto;
-      border: 1.5px solid var(--g2); border-radius: 16px;
-      background: var(--cream); padding: 1.5rem;
-    }
-    .difference-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1rem;
-    }
-    .difference-item { background: var(--white); border-radius: 12px; padding: .9rem 1rem; border: 1px solid var(--g2); }
-    .difference-item strong { display: block; font-size: .82rem; margin-bottom: .2rem; color: var(--ink); }
-    .difference-item span { font-size: .78rem; color: var(--g4); line-height: 1.55; }
-    @media (max-width:760px) { .difference-grid { grid-template-columns: 1fr; } }
+    .difference { padding: 1rem 2rem .5rem; background: var(--white); }
+    .difference-note { max-width: 860px; margin: 0 auto; font-size: .78rem; color: var(--g4); line-height: 1.7; text-align: center; }
     @media (max-width:700px) {
       .steps { grid-template-columns:1fr; gap:2rem; }
       .steps::before { display:none; }
@@ -943,15 +920,7 @@
     </div>
   </section>
   <section class="difference">
-    <div class="difference-box reveal">
-      <span class="tag">How we are different from universities</span>
-      <p class="lead" style="max-width:100%;margin:0">We are an independent advisory partner: we guide eligibility, funding paperwork, and course matching across multiple providers. We do not award degrees, set tuition, or decide admissions.</p>
-      <div class="difference-grid">
-        <div class="difference-item"><strong>Independent advisor</strong><span>We compare suitable partner options rather than selling one campus.</span></div>
-        <div class="difference-item"><strong>Funding-first support</strong><span>We help complete Student Finance steps before enrolment decisions.</span></div>
-        <div class="difference-item"><strong>University decisions stay with universities</strong><span>Admissions, awards, and academic policy are handled by the university.</span></div>
-      </div>
-    </div>
+    <p class="difference-note reveal"><strong>How we are different from universities:</strong> Paesani is an independent advisory service that helps with eligibility and Student Finance paperwork across partner providers; admissions, degree awards, tuition setting, and academic decisions remain with each university.</p>
   </section>
 
   <!-- REFERRAL -->
