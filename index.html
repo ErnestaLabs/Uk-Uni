@@ -98,11 +98,8 @@
       max-width: 1200px; margin: 0 auto; padding: 0 2rem;
       display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
     }
-    .logo {
-      font-family: var(--serif); font-size: 1.4rem; color: var(--white);
-      text-decoration: none; letter-spacing: -.01em; flex-shrink: 0;
-    }
-    .logo span { color: var(--gold-2); }
+    .logo { display: inline-flex; align-items: center; }
+    .logo img { height: 36px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 2rem; }
     .nav-links a {
       font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.5);
@@ -652,10 +649,8 @@
       padding: 3rem 2rem; text-align: center;
       font-size: .76rem; line-height: 1.9;
     }
-    .footer-logo {
-      font-family: var(--serif); font-size: 1.4rem;
-      color: rgba(255,255,255,.3); display: block; margin-bottom: 1.5rem;
-    }
+    .footer-logo { display: inline-flex; margin-bottom: 1.25rem; opacity: .85; }
+    .footer-logo img { height: 34px; width: auto; filter: grayscale(1) brightness(1.9); }
     .footer-links {
       display: flex; justify-content: center; gap: 2rem;
       flex-wrap: wrap; margin-bottom: 1.5rem;
@@ -689,7 +684,9 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#" class="logo">Paes<span>ani</span></a>
+      <a href="#" class="logo" aria-label="Paesani Consulting Ltd">
+        <img src="logo.svg" alt="Paesani Consulting Ltd">
+      </a>
       <nav class="nav-links">
         <a href="#courses"  data-i18n="nav_courses">Courses</a>
         <a href="#funding"  data-i18n="nav_funding">Funding</a>
@@ -748,8 +745,8 @@
   </section>
   <div class="trust-strip">
     <div class="trust-strip-inner">
-      <span class="trust-pill">Company no. 17195580</span>
-      <span class="trust-pill">Registered office: 66 Paul Street, London EC2A 4NA</span>
+      <span class="trust-pill">PAESANI CONSULTING LTD · Company Number 17195580</span>
+      <span class="trust-pill">Registered office: 66, Paul Street, London, EC2A 4NA</span>
       <span class="trust-pill">Independent education advisory service (not a university)</span>
     </div>
   </div>
@@ -1009,14 +1006,14 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">Paesani</span>
+    <span class="footer-logo"><img src="logo.svg" alt="Paesani Consulting Ltd"></span>
     <div class="footer-links">
       <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
       <a href="terms.html"   data-i18n="footer_terms">Terms of Service</a>
       <a href="mailto:hello@paesani.co.uk" data-i18n="footer_contact">Contact Us</a>
       <a href="https://www.gov.uk/student-finance" target="_blank" rel="noopener noreferrer">Student Finance England ↗</a>
     </div>
-    <p class="footer-disc" data-i18n="footer_disc">Paesani is a trading name of Paesani Consulting Ltd (company no. 17195580), registered at 66 Paul Street, London EC2A 4NA. Independent educational advisory service — not affiliated with the UK Government or Student Finance England. All funding subject to individual eligibility assessed by SFE.</p>
+    <p class="footer-disc" data-i18n="footer_disc">PAESANI CONSULTING LTD is registered at 66, Paul Street, London, EC2A 4NA. Company Number 17195580. Independent educational advisory service — not affiliated with the UK Government or Student Finance England. All funding subject to individual eligibility assessed by SFE.</p>
     <p class="footer-disc">Compliance: <a href="privacy.html">Privacy Policy (Updated 4 May 2026)</a> · <a href="terms.html">Terms of Service (Updated 4 May 2026)</a></p>
     <p data-i18n="footer_copy">© 2025 Paesani Consulting Ltd. All rights reserved. Governed by English law.</p>
   </footer>
@@ -1115,7 +1112,7 @@ const T = {
     cta_p:'Eligibility check is free. Takes 5 minutes. No commitment. No catch.',
     cta_btn:'Check My Eligibility →',
     footer_privacy:'Privacy Policy', footer_terms:'Terms of Service', footer_contact:'Contact Us',
-    footer_disc:'Paesani is a trading name of Paesani Consulting Ltd (company no. 17195580), registered at 66 Paul Street, London EC2A 4NA. Independent educational advisory service — not affiliated with the UK Government or Student Finance England.',
+    footer_disc:'PAESANI CONSULTING LTD is registered at 66, Paul Street, London, EC2A 4NA. Company Number 17195580. Independent educational advisory service — not affiliated with the UK Government or Student Finance England.',
     footer_copy:'© 2025 Paesani Consulting Ltd. All rights reserved. Governed by English law.',
     mob_cta:'Check My Eligibility — Free'
   },
@@ -1184,7 +1181,7 @@ const T = {
     cta_p:'La verifica di idoneità è gratuita. Richiede 5 minuti. Nessun impegno. Nessun trucco.',
     cta_btn:'Verifica la mia Idoneità →',
     footer_privacy:'Informativa sulla Privacy', footer_terms:'Termini di Servizio', footer_contact:'Contattaci',
-    footer_disc:'Paesani è un nome commerciale di Paesani Consulting Ltd (n. 17195580), con sede in 66 Paul Street, Londra EC2A 4NA. Servizio di consulenza educativa indipendente — non affiliato al Governo Britannico o a Student Finance England.',
+    footer_disc:'PAESANI CONSULTING LTD è registrata presso 66, Paul Street, London, EC2A 4NA. Numero società 17195580. Servizio di consulenza educativa indipendente — non affiliato al Governo Britannico o a Student Finance England.',
     footer_copy:'© 2025 Paesani Consulting Ltd. Tutti i diritti riservati. Soggetto alla legge inglese.',
     mob_cta:'Verifica la mia Idoneità — Gratis'
   },
@@ -1253,7 +1250,7 @@ const T = {
     cta_p:'Перевірка права безкоштовна. Займає 5 хвилин. Без зобов\'язань.',
     cta_btn:'Перевірити право →',
     footer_privacy:'Політика конфіденційності', footer_terms:'Умови використання', footer_contact:'Зв\'язатися',
-    footer_disc:'Paesani — торгова назва Paesani Consulting Ltd (№ 17195580), зареєстрованої за адресою 66 Paul Street, London EC2A 4NA. Незалежна освітня консультаційна служба — не пов\'язана з урядом Великобританії або Student Finance England.',
+    footer_disc:'PAESANI CONSULTING LTD зареєстрована за адресою 66, Paul Street, London, EC2A 4NA. Номер компанії 17195580. Незалежна освітня консультаційна служба — не пов\'язана з урядом Великобританії або Student Finance England.',
     footer_copy:'© 2025 Paesani Consulting Ltd. Усі права захищені. Регулюється англійським правом.',
     mob_cta:'Перевірити право — Безкоштовно'
   }
