@@ -83,6 +83,11 @@
       letter-spacing: .01em;
     }
     .topbar a { color: var(--ink); text-decoration: underline; }
+    .topbar-utility {
+      display: inline-flex; gap: .85rem; margin-left: .75rem;
+      font-size: .73rem; font-weight: 700;
+    }
+    .topbar-utility a { text-underline-offset: 2px; }
 
     /* ── NAV ─────────────────────────────────────────────── */
     .nav {
@@ -245,6 +250,22 @@
       padding-top: 2.5rem;
       max-width: 600px; margin: 0 auto;
     }
+    .trust-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--g2);
+      padding: .85rem 2rem;
+    }
+    .trust-strip-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: .75rem 1.5rem;
+      justify-content: center;
+    }
+    .trust-pill {
+      font-size: .73rem; font-weight: 700; color: var(--g5);
+      background: var(--g1); border: 1px solid var(--g2);
+      border-radius: 100px; padding: .38rem .85rem;
+    }
+    .qualifier { font-size: .72rem; color: var(--g4); font-weight: 600; }
     .hero-stat {
       flex: 1; text-align: center;
       padding: 0 1.5rem;
@@ -503,6 +524,21 @@
       font-size: .875rem; color: var(--g5); line-height: 1.75;
     }
     .fund-note strong { color: var(--ink); }
+    .difference {
+      padding: 3.5rem 2rem 1rem; background: var(--white);
+    }
+    .difference-box {
+      max-width: 900px; margin: 0 auto;
+      border: 1.5px solid var(--g2); border-radius: 16px;
+      background: var(--cream); padding: 1.5rem;
+    }
+    .difference-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1rem;
+    }
+    .difference-item { background: var(--white); border-radius: 12px; padding: .9rem 1rem; border: 1px solid var(--g2); }
+    .difference-item strong { display: block; font-size: .82rem; margin-bottom: .2rem; color: var(--ink); }
+    .difference-item span { font-size: .78rem; color: var(--g4); line-height: 1.55; }
+    @media (max-width:760px) { .difference-grid { grid-template-columns: 1fr; } }
     @media (max-width:700px) {
       .steps { grid-template-columns:1fr; gap:2rem; }
       .steps::before { display:none; }
@@ -671,6 +707,10 @@
   <!-- TOP BAR -->
   <div class="topbar" data-i18n="topbar">
     🎯 Eligibility check takes 60 seconds — and it's completely free
+    <span class="topbar-utility">
+      <a href="privacy.html">Privacy (Updated 4 May 2026)</a>
+      <a href="terms.html">Terms (Updated 4 May 2026)</a>
+    </span>
   </div>
 
   <!-- NAV -->
@@ -729,6 +769,13 @@
       </div>
     </div>
   </section>
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <span class="trust-pill">Company no. 17195580</span>
+      <span class="trust-pill">Registered office: 66 Paul Street, London EC2A 4NA</span>
+      <span class="trust-pill">Independent education advisory service (not a university)</span>
+    </div>
+  </div>
 
   <!-- WHY HAVEN'T YOU -->
   <section class="why-not" id="eligibility">
@@ -800,7 +847,7 @@
     <div class="stats-inner">
       <div class="stat-item reveal reveal-d1">
         <span class="stat-val" data-count="0" data-prefix="£">£0</span>
-        <span class="stat-label" data-i18n="stat1_label">Upfront cost to study</span>
+        <span class="stat-label" data-i18n="stat1_label">Upfront cost to study <span class="qualifier">(for eligible UK-funded applicants)</span></span>
       </div>
       <div class="stat-item reveal reveal-d2">
         <span class="stat-val" data-count="12" data-suffix="+">12+</span>
@@ -808,7 +855,7 @@
       </div>
       <div class="stat-item reveal reveal-d3">
         <span class="stat-val" data-count="300" data-prefix="£">£300</span>
-        <span class="stat-label" data-i18n="stat3_label">Per successful referral</span>
+        <span class="stat-label" data-i18n="stat3_label">Per successful referral <span class="qualifier">(paid after enrolment + SFE confirmation)</span></span>
       </div>
     </div>
   </div>
@@ -871,7 +918,7 @@
     <div class="tac reveal">
       <span class="tag" data-i18n="fund_tag">Student Finance England</span>
       <h2 class="h2" data-i18n="fund_h2">How the money works.</h2>
-      <p class="lead" data-i18n="fund_sub">The UK government covers your tuition entirely. You repay nothing until you earn over £25,000.</p>
+      <p class="lead" data-i18n="fund_sub">The UK government covers your tuition entirely <span class="qualifier">(subject to SFE eligibility and course approval)</span>. You repay nothing until you earn over £25,000 <span class="qualifier">(current plan thresholds can change).</span></p>
     </div>
     <div class="steps">
       <div class="step reveal reveal-d1">
@@ -895,6 +942,17 @@
       <p data-i18n="fund_note"><strong>Repayments are income-contingent.</strong> You repay 9% of earnings above £25,000 per year — only when you're earning enough to. If you never earn over the threshold, you never repay a penny. Remaining balance written off after 40 years.</p>
     </div>
   </section>
+  <section class="difference">
+    <div class="difference-box reveal">
+      <span class="tag">How we are different from universities</span>
+      <p class="lead" style="max-width:100%;margin:0">We are an independent advisory partner: we guide eligibility, funding paperwork, and course matching across multiple providers. We do not award degrees, set tuition, or decide admissions.</p>
+      <div class="difference-grid">
+        <div class="difference-item"><strong>Independent advisor</strong><span>We compare suitable partner options rather than selling one campus.</span></div>
+        <div class="difference-item"><strong>Funding-first support</strong><span>We help complete Student Finance steps before enrolment decisions.</span></div>
+        <div class="difference-item"><strong>University decisions stay with universities</strong><span>Admissions, awards, and academic policy are handled by the university.</span></div>
+      </div>
+    </div>
+  </section>
 
   <!-- REFERRAL -->
   <section class="referral" id="referral">
@@ -903,7 +961,7 @@
       <div class="reveal">
         <div class="ref-tag" data-i18n="ref_tag">Referral Programme</div>
         <h2 data-i18n="ref_h2">Know someone who qualifies?<br><em>Earn £300.</em></h2>
-        <p data-i18n="ref_p">Refer them to us. If they enrol at university and their Student Finance is confirmed — we pay you £300. No catches. No limits on how many you refer.</p>
+        <p data-i18n="ref_p">Refer them to us. If they enrol at university and their Student Finance is confirmed — we pay you £300 <span class="qualifier">(per eligible enrolment, paid under referral terms)</span>. No catches. No limits on how many you refer.</p>
         <p style="font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:.75rem" data-i18n="ref_how">How it works:</p>
         <ul class="ref-steps">
           <li class="ref-step"><span class="ref-step-n">1</span><span data-i18n="ref_s1">Mention us to someone you know who might qualify</span></li>
@@ -990,6 +1048,7 @@
       <a href="https://www.gov.uk/student-finance" target="_blank" rel="noopener noreferrer">Student Finance England ↗</a>
     </div>
     <p class="footer-disc" data-i18n="footer_disc">Paesani is a trading name of Paesani Consulting Ltd (company no. 17195580), registered at 66 Paul Street, London EC2A 4NA. Independent educational advisory service — not affiliated with the UK Government or Student Finance England. All funding subject to individual eligibility assessed by SFE.</p>
+    <p class="footer-disc">Compliance: <a href="privacy.html">Privacy Policy (Updated 4 May 2026)</a> · <a href="terms.html">Terms of Service (Updated 4 May 2026)</a></p>
     <p data-i18n="footer_copy">© 2025 Paesani Consulting Ltd. All rights reserved. Governed by English law.</p>
   </footer>
 
