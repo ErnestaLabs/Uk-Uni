@@ -41,6 +41,8 @@
     }
     .logo { font-weight: 800; font-size: 1.25rem; color: var(--brand); text-decoration: none; }
     .menu { display: flex; gap: 22px; align-items: center; }
+    .lang-select { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:8px 12px; font-weight:600; }
+    .lang-select:focus { outline:2px solid #7aa2ff; outline-offset:2px; }
     .menu a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .92rem; }
     .btn { border: 0; border-radius: 999px; padding: 11px 18px; font-weight: 700; cursor: pointer; }
     .btn-primary { background: var(--accent); color: #fff; }
@@ -111,6 +113,20 @@
         <a class="hide-sm" href="#platform">Platform</a>
         <a class="hide-sm" href="#process">Process</a>
         <a class="hide-sm" href="#compliance">Compliance</a>
+        <a class="hide-sm" href="#forms">Forms</a>
+        <label for="lang" class="visually-hidden" style="position:absolute;left:-9999px;">Language</label>
+        <select id="lang" class="lang-select" aria-label="Select language">
+          <option>English (UK)</option>
+          <option>Українська</option>
+          <option>Français</option>
+          <option>Deutsch</option>
+          <option>Español</option>
+          <option>Italiano</option>
+          <option>Polski</option>
+          <option>Română</option>
+          <option>Português</option>
+          <option>Nederlands</option>
+        </select>
         <button class="btn btn-primary">Book Eligibility Call</button>
       </nav>
     </div>
@@ -161,6 +177,26 @@
       </div>
     </section>
 
+
+    <section class="section" id="forms">
+      <div class="container">
+        <h2>Start with the right form</h2>
+        <p class="sub">Choose the path that matches your intent: referral partner submissions or direct student applications.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Referral form</h3>
+            <p style="margin-bottom:14px;">For partners and community referrers introducing eligible prospects.</p>
+            <div data-tf-live="01KQR9F15KZ21YG3QEG89W0XZC"></div>
+          </article>
+          <article class="card">
+            <h3>Application form</h3>
+            <p style="margin-bottom:14px;">For prospective students ready to begin eligibility and admissions support.</p>
+            <div data-tf-live="01KQR0HAC8MXPZ5EC7GE3HEXPW"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="compliance">
       <div class="container">
         <div class="cta">
@@ -184,5 +220,6 @@
       <p>© 2026 Paesani Consulting Ltd. Admissions support only; no legal or financial advice.</p>
     </div>
   </footer>
+  <script src="//embed.typeform.com/next/embed.js"></script>
 </body>
 </html>
