@@ -30,7 +30,10 @@
       --g5:        #3A3730;
       --serif: 'DM Serif Display', Georgia, serif;
       --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
-      --ease:  cubic-bezier(.22,.68,0,1.2);
+      --motion-curve: cubic-bezier(.22,.68,0,1);
+      --motion-fast: .24s;
+      --motion-base: .5s;
+      --motion-slow: .72s;
     }
 
     /* ── RESET ───────────────────────────────────────────── */
@@ -53,18 +56,18 @@
       from { opacity:0; }
       to   { opacity:1; }
     }
-    .a1 { animation: fadeUp .65s ease .08s both; }
-    .a2 { animation: fadeUp .65s ease .22s both; }
-    .a3 { animation: fadeUp .65s ease .36s both; }
-    .a4 { animation: fadeUp .65s ease .50s both; }
-    .a5 { animation: fadeUp .65s ease .64s both; }
-    .a6 { animation: fadeIn .8s ease .72s both; }
+    .a1 { animation: fadeUp var(--motion-slow) var(--motion-curve) .08s both; }
+    .a2 { animation: fadeUp var(--motion-slow) var(--motion-curve) .20s both; }
+    .a3 { animation: fadeUp var(--motion-slow) var(--motion-curve) .32s both; }
+    .a4 { animation: fadeUp var(--motion-slow) var(--motion-curve) .44s both; }
+    .a5 { animation: fadeUp var(--motion-slow) var(--motion-curve) .56s both; }
+    .a6 { animation: fadeIn var(--motion-slow) var(--motion-curve) .68s both; }
 
     /* ── SCROLL REVEAL ───────────────────────────────────── */
     .reveal {
       opacity:0;
       transform:translateY(32px);
-      transition: opacity .6s ease, transform .6s ease;
+      transition: opacity var(--motion-base) var(--motion-curve), transform var(--motion-base) var(--motion-curve);
     }
     .reveal.vis { opacity:1; transform:none; }
     .reveal-d1 { transition-delay:.08s; }
@@ -168,6 +171,21 @@
     .hero-inner {
       max-width: 820px; margin: 0 auto;
       position: relative; z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 3px 3px;
+      mix-blend-mode: soft-light; opacity: .4;
+    }
+    .crest-motif {
+      position: absolute; right: -4rem; top: 4.5rem;
+      width: 210px; height: 210px; pointer-events: none; opacity: .2;
+      background: repeating-conic-gradient(from 14deg, rgba(228,184,96,.45) 0deg 10deg, transparent 10deg 22deg);
+      clip-path: polygon(50% 0%, 90% 18%, 100% 55%, 70% 100%, 30% 100%, 0% 55%, 10% 18%);
+      transform: rotate(12deg);
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -323,6 +341,28 @@
     .blocker-body span { font-size: .83rem; color: var(--g4); line-height: 1.6; }
     @media (max-width: 860px) { .why-not-inner { grid-template-columns:1fr; gap:2.5rem; } }
 
+    .edu-collage {
+      display: grid; gap: .9rem;
+      grid-template-columns: 1fr .8fr;
+      transform: translateY(-18px);
+    }
+    .edu-photo {
+      border-radius: 18px; overflow: hidden; position: relative;
+      min-height: 180px; border: 1px solid rgba(11,21,53,.08);
+      transition: transform var(--motion-base) var(--motion-curve), filter var(--motion-fast) var(--motion-curve);
+      will-change: transform, opacity;
+    }
+    .edu-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.94); }
+    .edu-photo:nth-child(1) { grid-row: span 2; min-height: 380px; }
+    .edu-photo:hover { transform: translateY(-5px) scale(1.01); filter: brightness(1.03); }
+    .offset-badge {
+      position: absolute; top: -12px; right: -10px;
+      background: var(--gold); color: var(--ink); font-size: .68rem; font-weight: 800;
+      padding: .35rem .7rem; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+    @media (max-width:860px) { .edu-collage{transform:none;} .edu-photo:nth-child(1){min-height:260px;} }
+
     /* ── AUDIENCE ─────────────────────────────────────────── */
     .audience { padding: 5.5rem 2rem 5rem; background: var(--white); }
     .audience-grid {
@@ -332,7 +372,7 @@
     .aud-card {
       border: 1.5px solid var(--g2); border-radius: 20px;
       padding: 2rem 1.75rem; position: relative; overflow: hidden;
-      transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+      transition: transform var(--motion-base) var(--motion-curve), box-shadow var(--motion-fast) var(--motion-curve), border-color var(--motion-fast) var(--motion-curve);
     }
     .aud-card::after {
       content: ''; position: absolute; inset: 0 0 auto;
@@ -385,7 +425,8 @@
     }
 
     /* ── COURSES ─────────────────────────────────────────── */
-    .courses { padding: 6rem 2rem; background: var(--cream); }
+    .courses { padding: 6rem 2rem; background: var(--cream); position:relative; }
+    .courses::before { content:""; position:absolute; left:0; right:0; top:0; height:52px; background: linear-gradient(165deg, transparent 0 42%, rgba(11,21,53,.08) 42% 44%, transparent 44%); pointer-events:none; }
     .courses-grid {
       max-width: 1150px; margin: 2.5rem auto 0;
       display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
@@ -394,7 +435,7 @@
       background: var(--white); border: 1.5px solid var(--g2);
       border-radius: 16px; padding: 1.5rem 1.35rem;
       display: flex; flex-direction: column; gap: .55rem;
-      transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
+      transition: transform var(--motion-fast) var(--motion-curve), box-shadow var(--motion-fast) var(--motion-curve), border-color var(--motion-fast) var(--motion-curve);
       cursor: default;
     }
     .course-card:hover {
@@ -698,6 +739,7 @@
   <section class="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
+    <div class="crest-motif" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow a1" data-i18n="hero_eyebrow">Student Finance England · UK Government Funded</div>
       <h1 class="a2" data-i18n="hero_h1">You already qualify.<br><em>You just need<br>to claim it.</em></h1>
@@ -740,29 +782,18 @@
         <p data-i18n="why_p2">Most people in your position have no idea they qualify. They assume university is for someone else — someone younger, someone with more money, someone who didn't drop out. That assumption is wrong, and it's costing you.</p>
         <p data-i18n="why_p3">Here are the three things that stop people. Here's why none of them apply to you.</p>
       </div>
-      <ul class="blockers">
-        <li class="blocker reveal reveal-d1">
-          <div class="blocker-x">✕</div>
-          <div class="blocker-body">
-            <strong data-i18n="b1_title">"I don't know if I qualify"</strong>
-            <span data-i18n="b1_body">If you're British, EU with 3+ years, or Ukrainian under a government scheme — you do. Our free check confirms it in 60 seconds.</span>
-          </div>
-        </li>
-        <li class="blocker reveal reveal-d2">
-          <div class="blocker-x">✕</div>
-          <div class="blocker-body">
-            <strong data-i18n="b2_title">"I can't afford university"</strong>
-            <span data-i18n="b2_body">You pay nothing upfront. Student Finance England pays your tuition directly to the university. You never see that money leave your account.</span>
-          </div>
-        </li>
-        <li class="blocker reveal reveal-d3">
-          <div class="blocker-x">✕</div>
-          <div class="blocker-body">
-            <strong data-i18n="b3_title">"I don't have time to study"</strong>
-            <span data-i18n="b3_body">Every programme we offer is flexible. Part-time, online-first, built around people who work. You don't quit your job. You study around it.</span>
-          </div>
-        </li>
-      </ul>
+      <div class="edu-collage reveal reveal-d1">
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="Students collaborating in a university workspace">
+          <span class="offset-badge">Career Lift</span>
+        </figure>
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80" alt="Adult learner studying with notes and laptop">
+        </figure>
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=80" alt="Graduate celebrating degree achievement">
+        </figure>
+      </div>
     </div>
   </section>
 
