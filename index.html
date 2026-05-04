@@ -4,293 +4,323 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Paesani | Guided UK Degree Pathways</title>
-  <meta name="description" content="Paesani is an independent advisory partner guiding students through funded UK degree pathways with multilingual support and transparent case handling." />
+  <meta name="description" content="Independent advisory guidance for funded UK degree pathways." />
   <meta name="robots" content="index, follow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f2eee7;
-      --ink: #171411;
-      --ink-soft: #4a443e;
-      --sand: #e0d6c9;
-      --panel: #fffdf8;
-      --olive: #364a3b;
-      --wine: #6e1f31;
-      --gold: #a87b31;
-      --line: #b7a895;
-      --radius: 20px;
-      --shadow: 0 18px 50px rgba(61, 41, 24, 0.17);
+      --paper: #f8f5ef;
+      --ink: #151515;
+      --charcoal: #1f2328;
+      --card: #fffdf9;
+      --line: #272727;
+      --accent: #ff4d2d;
+      --teal: #0f9e8f;
+      --mustard: #ddb53b;
+      --radius: 16px;
     }
+
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html, body { margin: 0; }
     body {
-      margin: 0;
-      font-family: "Manrope", sans-serif;
+      font-family: "Instrument Sans", sans-serif;
       color: var(--ink);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(168,123,49,0.18) 0 9%, transparent 30%),
-        radial-gradient(circle at 85% 90%, rgba(110,31,49,0.12) 0 14%, transparent 38%),
-        var(--bg);
+      background: var(--paper);
       line-height: 1.6;
+      background-image:
+        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 38px 38px;
     }
+
     .container { width: min(1160px, 92vw); margin: 0 auto; }
-    .noise::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .05;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23000000' fill-opacity='.4'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3C/g%3E%3C/svg%3E");
-      z-index: 999;
-    }
+
     .nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(8px);
-      background: rgba(242, 238, 231, 0.85);
-      border-bottom: 1px solid rgba(97, 79, 56, .25);
-    }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; gap: 14px; }
-    .brand { text-decoration: none; color: var(--ink); display: flex; align-items: center; gap: 12px; }
-    .seal {
-      width: 46px; height: 46px; border-radius: 50%;
-      border: 1px solid var(--line);
-      background: conic-gradient(from 120deg, #f6f2ea, #e8dccd, #f6f2ea);
-      display: grid; place-items: center;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.4rem; font-weight: 700;
-    }
-    .brand strong { display: block; font-size: 0.95rem; letter-spacing: .05em; text-transform: uppercase; }
-    .brand small { display: block; color: var(--ink-soft); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
-
-    .menu { display: flex; align-items: center; gap: 15px; }
-    .menu a { text-decoration: none; color: var(--ink-soft); font-size: .9rem; font-weight: 700; }
-
-    .lang-select, .btn {
-      border-radius: 999px; padding: 9px 15px; font-weight: 700;
-      font-family: inherit; font-size: .85rem;
-    }
-    .lang-select { border: 1px solid var(--line); background: var(--panel); }
-    .btn { text-decoration: none; border: 1px solid transparent; display: inline-block; }
-    .btn-primary { background: var(--wine); color: #fff; }
-    .btn-ghost { border-color: var(--line); color: var(--ink); }
-
-    .hero { padding: 56px 0 64px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.06fr .94fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-    .hero-left {
-      background: var(--panel);
-      border: 1px solid #c9baa8;
-      border-radius: 28px;
-      padding: 44px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-left::after {
-      content: "";
-      position: absolute;
-      width: 180px; height: 180px;
-      border: 1px dashed rgba(168,123,49,.45);
-      border-radius: 50%; right: -58px; top: -58px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(248, 245, 239, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid var(--line);
     }
 
-    .eyebrow { margin: 0; text-transform: uppercase; letter-spacing: .14em; color: var(--wine); font-size: .74rem; font-weight: 800; }
-    h1, h2, h3 { font-family: "Cormorant Garamond", serif; line-height: 1.05; }
-    h1 { font-size: clamp(2.3rem, 5vw, 4rem); margin: 14px 0 14px; max-width: 12ch; }
-    .lead { margin: 0 0 22px; max-width: 58ch; color: var(--ink-soft); }
-
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-    .quotes {
-      border-top: 1px solid #d9ccbc; padding-top: 14px;
-      display: grid; gap: 8px;
-      color: #3e362f; font-size: .95rem;
-    }
-
-    .hero-right {
-      border-radius: 28px;
-      min-height: 500px;
-      background:
-        linear-gradient(25deg, rgba(20, 14, 8, .52), rgba(20, 14, 8, .12)),
-        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80') center/cover;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .floating-panel {
-      position: absolute; right: 20px; bottom: 20px;
-      max-width: 300px;
-      background: rgba(255, 251, 245, .94);
-      border: 1px solid #c9b59d;
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .floating-panel strong { font-size: 1.4rem; display: block; font-family: "Cormorant Garamond", serif; }
-
-    .section { padding: 66px 0; }
-    h2 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3rem); }
-    .sub { margin: 0 0 28px; max-width: 65ch; color: var(--ink-soft); }
-
-    .support-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
-    .card {
-      background: var(--panel);
-      border: 1px solid #ccbba7;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 8px 22px rgba(67, 48, 31, 0.11);
-      transform: translateY(18px);
-      opacity: 0;
-      transition: .6s ease;
-    }
-    .card.reveal { transform: none; opacity: 1; }
-    .card p { margin: 0; color: var(--ink-soft); }
-
-    .journey-shell {
-      display: grid; gap: 14px;
-      border-left: 2px solid #bda88e;
-      padding-left: 20px;
-    }
-    .step { background: #fffaf2; border: 1px solid #d8c7b2; border-radius: 14px; padding: 14px 16px; position: relative; }
-    .step::before {
-      content: attr(data-step);
-      position: absolute; left: -32px; top: 13px;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: var(--olive); color: #fff; display: grid; place-items: center; font-size: .75rem;
-    }
-
-    .forms-wrap { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
-
-    .legal-banner {
-      background: #201a16;
-      color: #f7ede0;
-      border-radius: 20px;
-      padding: 24px;
-      border: 1px solid #4f3e31;
+    .nav-inner {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
+      padding: 12px 0;
     }
-    .legal-banner a { color: #f6d6a0; text-decoration: none; font-weight: 800; }
 
-    footer { padding: 30px 0 45px; color: var(--ink-soft); }
-    footer a { color: var(--olive); text-decoration: none; margin-right: 14px; }
+    .brand { text-decoration: none; color: var(--ink); display: flex; align-items: center; gap: 12px; }
+    .brand-badge {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--ink); color: #fff; display: grid; place-items: center;
+      font-family: "Bebas Neue", sans-serif; font-size: 1.4rem; letter-spacing: .04em;
+    }
+    .brand-copy strong {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: .07em;
+      font-size: 1.15rem;
+    }
+    .brand-copy small { display: block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
 
-    @media (max-width: 1000px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-right { min-height: 360px; }
-      .support-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .menu { display: flex; align-items: center; gap: 14px; }
+    .menu a { text-decoration: none; color: var(--ink); font-weight: 700; font-size: .9rem; }
+
+    .lang-select, .btn {
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 800;
+      font-family: inherit;
+      font-size: .83rem;
+      background: #fff;
+    }
+
+    .btn { text-decoration: none; display: inline-block; }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-alt { background: #fff; color: var(--ink); }
+
+    .hero { padding: 58px 0 50px; }
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      border: 2px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 12px 12px 0 #1f2328;
+      background: #fff;
+    }
+    .hero-copy { padding: 44px; position: relative; }
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: 26px;
+      top: 24px;
+      width: 98px;
+      height: 98px;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      opacity: .15;
+    }
+    .eyebrow {
+      margin: 0;
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+      background: #fff4d6;
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.05; }
+    h1 {
+      margin-top: 14px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: .02em;
+      max-width: 12ch;
+    }
+    .lead { margin: 14px 0 0; max-width: 58ch; }
+    .hero-actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .bullet-list { margin: 22px 0 0; padding-left: 17px; }
+
+    .hero-image {
+      min-height: 470px;
+      background:
+        linear-gradient(160deg, rgba(12, 14, 20, .5), rgba(12, 14, 20, .12)),
+        url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border-left: 2px solid var(--line);
+      display: flex;
+      align-items: end;
+      justify-content: end;
+      padding: 20px;
+    }
+    .metric {
+      border: 2px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px;
+      max-width: 260px;
+      font-size: .9rem;
+    }
+    .metric strong { display: block; font-family: "Bebas Neue", sans-serif; font-size: 1.9rem; line-height: .95; }
+
+    .section { padding: 64px 0; }
+    h2 { font-family: "Bebas Neue", sans-serif; font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing: .02em; margin-bottom: 10px; }
+    .sub { margin: 0 0 24px; max-width: 64ch; }
+
+    .cards {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+    .card {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 18px;
+      transform: translateY(16px);
+      opacity: 0;
+      transition: .5s ease;
+    }
+    .card.show { transform: none; opacity: 1; }
+    .card h3 { font-family: "Bebas Neue", sans-serif; font-size: 1.5rem; margin-bottom: 6px; letter-spacing: .02em; }
+
+    .journey {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .step {
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fcfbf8;
+    }
+
+    .forms-wrap { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+    .legal {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      background: var(--charcoal);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .legal a { color: #fff; font-weight: 800; }
+
+    footer { padding: 34px 0 42px; }
+    footer a { color: var(--ink); margin-right: 14px; font-weight: 700; }
+
+    @media (max-width: 1020px) {
+      .hero-shell { grid-template-columns: 1fr; }
+      .hero-image { border-left: 0; border-top: 2px solid var(--line); min-height: 320px; }
+      .cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .forms-wrap { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
       .menu a.hide-sm { display: none; }
-      .hero-left { padding: 30px 22px; }
-      .support-grid { grid-template-columns: 1fr; }
-      .nav-inner { align-items: flex-start; }
       .menu { flex-wrap: wrap; justify-content: end; }
+      .hero-copy { padding: 30px 20px; }
+      .cards { grid-template-columns: 1fr; }
+      .hero { padding-top: 40px; }
     }
   </style>
 </head>
-<body class="noise">
+<body>
   <header class="nav" aria-label="Primary">
     <div class="container nav-inner">
       <a href="index.html" class="brand" aria-label="Paesani home">
-        <span class="seal">P</span>
-        <span><strong>Paesani</strong><small>Independent Student Advisory</small></span>
+        <span class="brand-badge">P</span>
+        <span class="brand-copy"><strong>Paesani</strong><small data-i18n="brandTag">Independent Student Advisory</small></span>
       </a>
       <nav class="menu" aria-label="Site links">
-        <a class="hide-sm" href="#support">Support</a>
-        <a class="hide-sm" href="#journey">Journey</a>
-        <a class="hide-sm" href="#forms">Forms</a>
-        <a class="hide-sm" href="#compliance">Legal</a>
+        <a class="hide-sm" href="#support" data-i18n="navSupport">Support</a>
+        <a class="hide-sm" href="#journey" data-i18n="navJourney">Journey</a>
+        <a class="hide-sm" href="#forms" data-i18n="navForms">Forms</a>
+        <a class="hide-sm" href="#compliance" data-i18n="navLegal">Legal</a>
         <select id="lang" class="lang-select" aria-label="Select language">
-          <option>English (UK)</option><option>Українська</option><option>Français</option><option>Deutsch</option><option>Español</option><option>Italiano</option><option>Polski</option><option>Română</option><option>Português</option><option>Nederlands</option>
+          <option value="en">English (UK)</option>
+          <option value="uk">Українська</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="pl">Polski</option>
+          <option value="ro">Română</option>
+          <option value="pt">Português</option>
+          <option value="nl">Nederlands</option>
         </select>
-        <a href="#forms" class="btn btn-primary">Start</a>
+        <a href="#forms" class="btn btn-primary" data-i18n="ctaStart">Start</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <article class="hero-left">
-          <p class="eyebrow">Guided UK Degree Pathways</p>
-          <h1>Turn application uncertainty into a clear next move.</h1>
-          <p class="lead">Paesani is not a university. We are an independent advisory team helping students prepare funded UK degree applications with structure, multilingual clarity, and document-ready support.</p>
+      <div class="container hero-shell">
+        <article class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Guided UK Degree Pathways</p>
+          <h1 data-i18n="heroTitle">Turn application uncertainty into a clear next move.</h1>
+          <p class="lead" data-i18n="heroLead">Paesani is not a university. We are an independent advisory team helping students prepare funded UK degree applications with structure, multilingual clarity, and document-ready support.</p>
           <div class="hero-actions">
-            <a href="#forms" class="btn btn-primary">Begin application</a>
-            <a href="#journey" class="btn btn-ghost">View student journey</a>
+            <a href="#forms" class="btn btn-primary" data-i18n="heroBtn1">Begin application</a>
+            <a href="#journey" class="btn btn-alt" data-i18n="heroBtn2">View student journey</a>
           </div>
-          <div class="quotes">
-            <div>• One advisor assigned to each student case.</div>
-            <div>• Clear checkpoints from pre-assessment to submission.</div>
-            <div>• Communication in English, Ukrainian, and EU languages.</div>
-          </div>
+          <ul class="bullet-list">
+            <li data-i18n="bullet1">One advisor assigned to each student case.</li>
+            <li data-i18n="bullet2">Clear checkpoints from pre-assessment to submission.</li>
+            <li data-i18n="bullet3">Support in English, Ukrainian, and EU languages.</li>
+          </ul>
         </article>
-        <aside class="hero-right" aria-label="Students in a campus-style learning environment">
-          <div class="floating-panel">
-            <strong>48h</strong>
-            Typical first eligibility response.<br>
-            <strong>UK GDPR</strong>
-            Privacy-first information handling.
-          </div>
+        <aside class="hero-image" aria-label="Students in a lecture hall">
+          <div class="metric"><strong>48h</strong><span data-i18n="metric">Typical first eligibility response and case follow-up.</span></div>
         </aside>
       </div>
     </section>
 
     <section class="section" id="support">
       <div class="container">
-        <h2>What we deliver</h2>
-        <p class="sub">Our team supports student decision-making and application quality. We do not issue degrees, and we do not represent ourselves as a university.</p>
-        <div class="support-grid">
-          <article class="card"><h3>Route-fit screening</h3><p>We review profile fit early to avoid wasted effort on unsuitable pathways.</p></article>
-          <article class="card"><h3>Application pack review</h3><p>We help organise evidence and close gaps before submission windows.</p></article>
-          <article class="card"><h3>Progress coordination</h3><p>You receive practical next-step guidance at each stage of your case.</p></article>
-          <article class="card"><h3>Multilingual support</h3><p>Advisory communication is available in English, Ukrainian, and key EU languages.</p></article>
+        <h2 data-i18n="supportTitle">What we deliver</h2>
+        <p class="sub" data-i18n="supportSub">We support student decision-making and application quality. We do not issue degrees and we do not present ourselves as a university.</p>
+        <div class="cards">
+          <article class="card"><h3 data-i18n="c1t">Route-fit screening</h3><p data-i18n="c1d">Early checks prevent wasted applications on unsuitable pathways.</p></article>
+          <article class="card"><h3 data-i18n="c2t">Application pack review</h3><p data-i18n="c2d">We help close evidence gaps before final submission.</p></article>
+          <article class="card"><h3 data-i18n="c3t">Progress coordination</h3><p data-i18n="c3d">You receive practical next-step guidance at every stage.</p></article>
+          <article class="card"><h3 data-i18n="c4t">Multilingual support</h3><p data-i18n="c4d">Communication available in English, Ukrainian, and major EU languages.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="journey">
       <div class="container">
-        <h2>Your journey, step by step</h2>
-        <p class="sub">Built for external clarity — no internal sales jargon, no confusing process language.</p>
-        <div class="journey-shell">
-          <article class="step" data-step="1"><strong>Choose your entry path.</strong><br>Submit as a student applicant or as a referral partner.</article>
-          <article class="step" data-step="2"><strong>Complete pre-assessment.</strong><br>We check route fit and required documents with you.</article>
-          <article class="step" data-step="3"><strong>Strengthen your application.</strong><br>We review your materials before submission.</article>
-          <article class="step" data-step="4"><strong>Submit with confidence.</strong><br>We stay with you through next updates and enrolment-stage guidance.</article>
+        <h2 data-i18n="journeyTitle">Your journey, step by step</h2>
+        <p class="sub" data-i18n="journeySub">No internal jargon — clear student-facing guidance throughout.</p>
+        <div class="journey">
+          <article class="step" data-i18n="s1">1. Choose your entry path: student application or referral partner.</article>
+          <article class="step" data-i18n="s2">2. Complete pre-assessment and confirm route-fit requirements.</article>
+          <article class="step" data-i18n="s3">3. Strengthen your documents before submission.</article>
+          <article class="step" data-i18n="s4">4. Submit with confidence and receive follow-up support.</article>
         </div>
       </div>
     </section>
 
     <section class="section" id="forms">
       <div class="container">
-        <h2>Apply or refer</h2>
-        <p class="sub">Secure form intake for both pathways.</p>
+        <h2 data-i18n="formsTitle">Apply or refer</h2>
+        <p class="sub" data-i18n="formsSub">Secure intake for both pathways.</p>
         <div class="forms-wrap">
-          <article class="card"><h3>Referral form</h3><p style="margin-bottom:14px;">For partners introducing students who may qualify.</p><div data-tf-live="01KQR9F15KZ21YG3QEG89W0XZC"></div></article>
-          <article class="card"><h3>Application form</h3><p style="margin-bottom:14px;">For students ready to start pre-assessment.</p><div data-tf-live="01KQR0HAC8MXPZ5EC7GE3HEXPW"></div></article>
+          <article class="card show"><h3 data-i18n="refTitle">Referral form</h3><p style="margin-bottom: 14px;" data-i18n="refDesc">For partners introducing students who may qualify.</p><div data-tf-live="01KQR9F15KZ21YG3QEG89W0XZC"></div></article>
+          <article class="card show"><h3 data-i18n="appTitle">Application form</h3><p style="margin-bottom: 14px;" data-i18n="appDesc">For students ready to begin pre-assessment.</p><div data-tf-live="01KQR0HAC8MXPZ5EC7GE3HEXPW"></div></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="compliance">
       <div class="container">
-        <div class="legal-banner">
+        <div class="legal">
           <div>
-            <h2 style="margin:0 0 6px;">Legal and privacy</h2>
-            Review policy documents before sharing personal data.
+            <h2 style="margin-bottom: 4px;" data-i18n="legalTitle">Legal and privacy</h2>
+            <span data-i18n="legalSub">Please review policy pages before sharing personal data.</span>
           </div>
           <div>
-            <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html" data-i18n="privacy">Privacy Policy</a> · <a href="terms.html" data-i18n="terms">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -299,20 +329,49 @@
 
   <footer>
     <div class="container">
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <p>© 2026 Paesani Consulting Ltd. Independent advisory service — not a university, and not legal/financial advice.</p>
+      <a href="privacy.html" data-i18n="privacyFoot">Privacy</a>
+      <a href="terms.html" data-i18n="termsFoot">Terms</a>
+      <p data-i18n="footerNote">© 2026 Paesani Consulting Ltd. Independent advisory service — not a university and not legal/financial advice.</p>
     </div>
   </footer>
 
   <script>
-    const cards = document.querySelectorAll('.card');
+    const translations = {
+      en: {},
+      uk: {navSupport:"Підтримка",navJourney:"Шлях",navForms:"Форми",navLegal:"Юридичне",ctaStart:"Почати",brandTag:"Незалежний студентський супровід",eyebrow:"Супровід до британської освіти",heroTitle:"Перетворіть невизначеність заявки на чіткий план дій.",heroLead:"Paesani — не університет. Ми незалежна команда, яка допомагає студентам готувати заявки на фінансовані програми у Великій Британії.",heroBtn1:"Розпочати заявку",heroBtn2:"Переглянути шлях",bullet1:"Один радник для кожної справи.",bullet2:"Чіткі етапи від оцінки до подачі.",bullet3:"Підтримка англійською, українською та мовами ЄС.",metric:"Типова перша відповідь щодо відповідності і подальший супровід.",supportTitle:"Що ми надаємо",supportSub:"Ми підтримуємо рішення студентів та якість заявок. Ми не видаємо дипломи.",c1t:"Перевірка відповідності",c1d:"Рання перевірка зменшує ризик марних заявок.",c2t:"Перевірка пакета документів",c2d:"Допомагаємо закрити прогалини перед подачею.",c3t:"Координація прогресу",c3d:"Отримуєте практичні кроки на кожному етапі.",c4t:"Багатомовна підтримка",c4d:"Комунікація англійською, українською та мовами ЄС.",journeyTitle:"Ваш шлях крок за кроком",journeySub:"Без внутрішнього жаргону — зрозуміло для студентів.",s1:"1. Оберіть шлях: заявка студента або партнерська рекомендація.",s2:"2. Пройдіть попередню оцінку та вимоги.",s3:"3. Посильте документи перед подачею.",s4:"4. Подавайте впевнено та отримуйте подальшу підтримку.",formsTitle:"Подати або рекомендувати",formsSub:"Безпечні форми для обох шляхів.",refTitle:"Форма рекомендації",refDesc:"Для партнерів, які рекомендують студентів.",appTitle:"Форма заявки",appDesc:"Для студентів, готових почати оцінку.",legalTitle:"Юридична інформація та конфіденційність",legalSub:"Перегляньте політики перед передачею персональних даних.",privacy:"Політика конфіденційності",terms:"Умови сервісу",privacyFoot:"Конфіденційність",termsFoot:"Умови",footerNote:"© 2026 Paesani Consulting Ltd. Незалежний сервіс супроводу — не університет."},
+      fr: {navSupport:"Accompagnement", navJourney:"Parcours", navForms:"Formulaires", ctaStart:"Commencer"},
+      de: {navSupport:"Beratung", navJourney:"Ablauf", navForms:"Formulare", ctaStart:"Start"},
+      es: {navSupport:"Soporte", navJourney:"Recorrido", navForms:"Formularios", ctaStart:"Empezar"},
+      it: {navSupport:"Supporto", navJourney:"Percorso", navForms:"Moduli", ctaStart:"Inizia"},
+      pl: {navSupport:"Wsparcie", navJourney:"Ścieżka", navForms:"Formularze", ctaStart:"Start"},
+      ro: {navSupport:"Suport", navJourney:"Parcurs", navForms:"Formulare", ctaStart:"Start"},
+      pt: {navSupport:"Suporte", navJourney:"Jornada", navForms:"Formulários", ctaStart:"Iniciar"},
+      nl: {navSupport:"Begeleiding", navJourney:"Traject", navForms:"Formulieren", ctaStart:"Start"}
+    };
+
+    function setLanguage(lang) {
+      const map = translations[lang] || {};
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (map[key]) el.textContent = map[key];
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    const langSelect = document.getElementById('lang');
+    const savedLang = localStorage.getItem('lang') || 'en';
+    langSelect.value = savedLang;
+    setLanguage(savedLang);
+    langSelect.addEventListener('change', (e) => setLanguage(e.target.value));
+
+    const cards = document.querySelectorAll('.card:not(.show)');
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('reveal');
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
     }, { threshold: 0.15 });
-    cards.forEach((c) => io.observe(c));
+    cards.forEach((card) => io.observe(card));
   </script>
   <script src="//embed.typeform.com/next/embed.js"></script>
 </body>
