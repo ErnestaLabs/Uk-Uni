@@ -34,10 +34,13 @@
       --motion-fast: .24s;
       --motion-base: .5s;
       --motion-slow: .72s;
-    }
-
-    /* ── RESET ───────────────────────────────────────────── */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    .a1 { animation: fadeUp var(--motion-slow) var(--motion-curve) .08s both; }
+    .a2 { animation: fadeUp var(--motion-slow) var(--motion-curve) .20s both; }
+    .a3 { animation: fadeUp var(--motion-slow) var(--motion-curve) .32s both; }
+    .a4 { animation: fadeUp var(--motion-slow) var(--motion-curve) .44s both; }
+    .a5 { animation: fadeUp var(--motion-slow) var(--motion-curve) .56s both; }
+    .a6 { animation: fadeIn var(--motion-slow) var(--motion-curve) .68s both; }
+      transition: opacity var(--motion-base) var(--motion-curve), transform var(--motion-base) var(--motion-curve);
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
       font-family: var(--sans);
@@ -144,6 +147,21 @@
     }
     .nav-cta:hover { background: var(--green-2); transform: translateY(-1px); }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 3px 3px;
+      mix-blend-mode: soft-light; opacity: .4;
+    }
+    .crest-motif {
+      position: absolute; right: -4rem; top: 4.5rem;
+      width: 210px; height: 210px; pointer-events: none; opacity: .2;
+      background: repeating-conic-gradient(from 14deg, rgba(228,184,96,.45) 0deg 10deg, transparent 10deg 22deg);
+      clip-path: polygon(50% 0%, 90% 18%, 100% 55%, 70% 100%, 30% 100%, 0% 55%, 10% 18%);
+      transform: rotate(12deg);
+    }
 
     /* ── HERO ─────────────────────────────────────────────── */
     .hero {
@@ -298,7 +316,29 @@
       line-height: 1.1; margin-bottom: .85rem;
       letter-spacing: -.02em;
     }
-    .h2.light { color: var(--white); }
+    .edu-collage {
+      display: grid; gap: .9rem;
+      grid-template-columns: 1fr .8fr;
+      transform: translateY(-18px);
+    }
+    .edu-photo {
+      border-radius: 18px; overflow: hidden; position: relative;
+      min-height: 180px; border: 1px solid rgba(11,21,53,.08);
+      transition: transform var(--motion-base) var(--motion-curve), filter var(--motion-fast) var(--motion-curve);
+      will-change: transform, opacity;
+    }
+    .edu-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.94); }
+    .edu-photo:nth-child(1) { grid-row: span 2; min-height: 380px; }
+    .edu-photo:hover { transform: translateY(-5px) scale(1.01); filter: brightness(1.03); }
+    .offset-badge {
+      position: absolute; top: -12px; right: -10px;
+      background: var(--gold); color: var(--ink); font-size: .68rem; font-weight: 800;
+      padding: .35rem .7rem; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+    @media (max-width:860px) { .edu-collage{transform:none;} .edu-photo:nth-child(1){min-height:260px;} }
+
+      transition: transform var(--motion-base) var(--motion-curve), box-shadow var(--motion-fast) var(--motion-curve), border-color var(--motion-fast) var(--motion-curve);
     .lead {
       font-size: 1.02rem; color: var(--g4);
       line-height: 1.82; font-weight: 400;
@@ -361,8 +401,9 @@
       padding: .35rem .7rem; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase;
       box-shadow: 0 8px 24px rgba(0,0,0,.16);
     }
-    @media (max-width:860px) { .edu-collage{transform:none;} .edu-photo:nth-child(1){min-height:260px;} }
-
+    .courses { padding: 6rem 2rem; background: var(--cream); position:relative; }
+    .courses::before { content:""; position:absolute; left:0; right:0; top:0; height:52px; background: linear-gradient(165deg, transparent 0 42%, rgba(11,21,53,.08) 42% 44%, transparent 44%); pointer-events:none; }
+      transition: transform var(--motion-fast) var(--motion-curve), box-shadow var(--motion-fast) var(--motion-curve), border-color var(--motion-fast) var(--motion-curve);
     /* ── AUDIENCE ─────────────────────────────────────────── */
     .audience { padding: 5.5rem 2rem 5rem; background: var(--white); }
     .audience-grid {
@@ -674,29 +715,19 @@
     }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
 
-    /* ── FOOTER ──────────────────────────────────────────── */
-    footer {
-      background: var(--ink); color: rgba(255,255,255,.3);
-      padding: 3rem 2rem; text-align: center;
-      font-size: .76rem; line-height: 1.9;
-    }
-    .footer-logo {
-      font-family: var(--serif); font-size: 1.4rem;
-      color: rgba(255,255,255,.3); display: block; margin-bottom: 1.5rem;
-    }
-    .footer-links {
-      display: flex; justify-content: center; gap: 2rem;
-      flex-wrap: wrap; margin-bottom: 1.5rem;
-    }
-    .footer-links a { color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-disc { max-width: 680px; margin: 0 auto 1rem; font-size: .72rem; color: rgba(255,255,255,.18); line-height: 1.85; }
-
-    /* ── MOBILE CTA ──────────────────────────────────────── */
-    .mob-cta {
-      display: none; position: fixed; bottom: 0; left: 0; right: 0;
-      padding: 1rem; background: var(--white);
-      border-top: 1px solid var(--g2); z-index: 300;
+    <div class="crest-motif" aria-hidden="true"></div>
+      <div class="edu-collage reveal reveal-d1">
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="Students collaborating in a university workspace">
+          <span class="offset-badge">Career Lift</span>
+        </figure>
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=700&q=80" alt="Adult learner studying with notes and laptop">
+        </figure>
+        <figure class="edu-photo">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=80" alt="Graduate celebrating degree achievement">
+        </figure>
+      </div>
       box-shadow: 0 -4px 24px rgba(0,0,0,.1);
     }
     .mob-cta a {
