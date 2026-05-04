@@ -3,118 +3,241 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paesani | Enterprise Admissions Platform</title>
-  <meta name="description" content="Paesani helps eligible students access funded UK degree pathways with transparent processes, compliance-first operations, and advisor support." />
+  <title>Paesani | Student Pathway Advisory</title>
+  <meta name="description" content="Paesani guides students into funded UK degree pathways with transparent support, multilingual communication, and compliance-first case management." />
   <meta name="robots" content="index, follow" />
   <style>
     :root {
-      --bg: #f5f7fb;
-      --surface: #ffffff;
-      --ink: #0e1b3d;
-      --muted: #5f6c89;
-      --brand: #102a5e;
-      --brand-2: #163f8f;
-      --accent: #0f7a43;
-      --accent-2: #0ea65a;
-      --line: #d8e0ef;
-      --radius: 14px;
+      --bg: #061128;
+      --panel: #0d1e43;
+      --panel-2: #102a5e;
+      --ink: #f3f7ff;
+      --muted: #b4c2e6;
+      --line: #29457f;
+      --brand: #4e8dff;
+      --accent: #37d7a8;
+      --accent-2: #20b88a;
+      --white: #ffffff;
+      --shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+      --radius: 16px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       color: var(--ink);
-      background: var(--bg);
-      line-height: 1.55;
+      background: radial-gradient(circle at top right, #173977 0%, var(--bg) 42%, #040b1d 100%);
+      line-height: 1.58;
     }
-    .container { width: min(1120px, 92vw); margin: 0 auto; }
+
+    .container { width: min(1180px, 92vw); margin: 0 auto; }
+
     .nav {
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: rgba(4, 11, 30, 0.72);
+      border-bottom: 1px solid rgba(107, 144, 224, 0.25);
     }
-    .nav-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 16px 0;
-    }
-    .logo { font-weight: 800; font-size: 1.25rem; color: var(--brand); text-decoration: none; }
-    .menu { display: flex; gap: 22px; align-items: center; }
-    .lang-select { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:8px 12px; font-weight:600; }
-    .lang-select:focus { outline:2px solid #7aa2ff; outline-offset:2px; }
-    .menu a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .92rem; }
-    .btn { border: 0; border-radius: 999px; padding: 11px 18px; font-weight: 700; cursor: pointer; }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-2); }
 
-    .hero {
-      padding: 72px 0 56px;
-      background: linear-gradient(145deg, #102a5e, #15367a);
-      color: #fff;
-    }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.12; margin: 0 0 16px; max-width: 18ch; }
-    .hero p { max-width: 60ch; color: #d2dcf7; margin: 0 0 28px; }
-    .hero-grid {
-      display: grid;
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      margin-top: 36px;
+      padding: 14px 0;
     }
-    .kpi {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #03112f;
+      background: linear-gradient(140deg, #7fb0ff 0%, #7fffd4 100%);
+      box-shadow: 0 10px 25px rgba(70, 133, 255, 0.35);
+    }
+
+    .brand-copy small { display: block; color: var(--muted); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .brand-copy strong { display: block; font-size: 1rem; }
+
+    .menu { display: flex; align-items: center; gap: 16px; }
+    .menu a { color: #d6e3ff; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+    .lang-select {
+      border: 1px solid #4367af;
+      background: #0b1b3f;
+      color: #e5efff;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 600;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary { background: linear-gradient(140deg, var(--accent) 0%, var(--accent-2) 100%); color: #041b1b; }
+    .btn-secondary { border: 1px solid #4b70ba; color: #dce8ff; }
+
+    .hero { padding: 72px 0 58px; }
+    .hero-shell {
+      border: 1px solid rgba(116, 156, 238, 0.4);
+      background: linear-gradient(145deg, rgba(15, 37, 82, 0.9), rgba(7, 18, 44, 0.92));
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 480px;
+    }
+
+    .hero-content { padding: 52px; }
+    .eyebrow {
+      margin: 0;
+      color: #9bc0ff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); line-height: 1.1; margin: 12px 0 16px; max-width: 14ch; }
+    .lead { color: #c6d7ff; max-width: 58ch; margin: 0 0 24px; }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-points { margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .hero-points li { color: #dbe8ff; padding-left: 28px; position: relative; }
+    .hero-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #7fffd5 30%, #33c39b 100%);
+      box-shadow: 0 0 0 5px rgba(127, 255, 213, 0.15);
+    }
+
+    .hero-visual {
+      background: linear-gradient(rgba(4, 13, 32, 0.2), rgba(4, 13, 32, 0.7)),
+        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80') center/cover;
+      display: flex;
+      align-items: end;
+      padding: 28px;
+    }
+
+    .metric-card {
+      width: 100%;
+      background: rgba(8, 22, 53, 0.86);
+      border: 1px solid rgba(136, 171, 245, 0.4);
+      border-radius: 14px;
       padding: 16px;
     }
-    .kpi strong { display: block; font-size: 1.35rem; }
-    .section { padding: 56px 0; }
-    .section h2 { margin: 0 0 10px; font-size: 1.9rem; }
-    .sub { margin: 0 0 30px; color: var(--muted); max-width: 70ch; }
-    .grid {
+
+    .metric-grid {
+      margin-top: 8px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .metric-grid strong { font-size: 1.2rem; display: block; }
+    .metric-grid span { color: var(--muted); font-size: 0.88rem; }
+
+    .section { padding: 64px 0; }
+    h2 { margin: 0 0 10px; font-size: 2rem; }
+    .sub { color: var(--muted); margin: 0 0 30px; max-width: 70ch; }
+
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: linear-gradient(170deg, rgba(18, 42, 93, 0.95), rgba(7, 20, 48, 0.98));
+      border: 1px solid rgba(87, 126, 201, 0.55);
       border-radius: var(--radius);
-      padding: 20px;
+      padding: 22px;
+      box-shadow: 0 16px 30px rgba(4, 11, 30, 0.35);
     }
-    .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
-    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .process ol { margin: 0; padding-left: 20px; color: var(--muted); }
-    .process li { margin-bottom: 12px; }
+    .card h3 { margin: 0 0 8px; }
+    .card p { margin: 0; color: #c9d9ff; }
+
+    .journey { display: grid; gap: 16px; }
+    .step { display: flex; gap: 14px; align-items: flex-start; }
+    .step span {
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(78, 141, 255, 0.22);
+      border: 1px solid rgba(124, 167, 247, 0.55);
+      font-weight: 800;
+    }
+
+    .forms-wrap { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
     .cta {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
+      background: linear-gradient(150deg, rgba(13, 36, 84, 0.92), rgba(9, 21, 53, 0.98));
+      border: 1px solid rgba(99, 139, 219, 0.55);
+      border-radius: 18px;
+      padding: 28px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
+      flex-wrap: wrap;
       align-items: center;
     }
-    footer { padding: 30px 0 44px; color: var(--muted); font-size: .9rem; }
-    footer a { color: var(--brand-2); text-decoration: none; margin-right: 16px; }
+
+    footer { padding: 30px 0 48px; color: var(--muted); }
+    footer a { color: #bdd2ff; margin-right: 16px; text-decoration: none; }
+
+    @media (max-width: 980px) {
+      .hero-shell { grid-template-columns: 1fr; }
+      .hero-content { padding: 36px 26px; }
+      .hero-visual { min-height: 300px; }
+    }
+
     @media (max-width: 780px) {
       .menu a.hide-sm { display: none; }
-      .hero { padding-top: 56px; }
+      .menu { flex-wrap: wrap; justify-content: end; }
+      .hero { padding-top: 42px; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
   <header class="nav" aria-label="Primary">
     <div class="container nav-inner">
-      <a href="index.html" class="logo">Paesani</a>
+      <a href="index.html" class="brand" aria-label="Paesani home">
+        <span class="brand-mark">P</span>
+        <span class="brand-copy"><small>Paesani</small><strong>Student Pathway Advisory</strong></span>
+      </a>
       <nav class="menu" aria-label="Site links">
-        <a class="hide-sm" href="#platform">Platform</a>
-        <a class="hide-sm" href="#process">Process</a>
-        <a class="hide-sm" href="#compliance">Compliance</a>
+        <a class="hide-sm" href="#journey">Journey</a>
+        <a class="hide-sm" href="#support">Support</a>
         <a class="hide-sm" href="#forms">Forms</a>
-        <label for="lang" class="visually-hidden" style="position:absolute;left:-9999px;">Language</label>
+        <a class="hide-sm" href="#compliance">Legal</a>
         <select id="lang" class="lang-select" aria-label="Select language">
           <option>English (UK)</option>
           <option>Українська</option>
@@ -127,70 +250,81 @@
           <option>Português</option>
           <option>Nederlands</option>
         </select>
-        <button class="btn btn-primary">Book Eligibility Call</button>
+        <a href="#forms" class="btn btn-primary">Start Now</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <p><strong>Enterprise-grade admissions advisory</strong></p>
-        <h1>Move from uncertainty to an enrolled UK degree pathway.</h1>
-        <p>Paesani combines expert counsellors, documented eligibility checks, and compliance-first case handling to support students through each stage of funding and admissions.</p>
-        <button class="btn btn-primary">Start secure pre-assessment</button>
-
-        <div class="hero-grid" aria-label="Performance indicators">
-          <article class="kpi"><strong>48h</strong><span>Average first eligibility response</span></article>
-          <article class="kpi"><strong>97%</strong><span>Application document accuracy score</span></article>
-          <article class="kpi"><strong>1:1</strong><span>Dedicated advisor per applicant</span></article>
-          <article class="kpi"><strong>UK GDPR</strong><span>Data handling aligned to legal obligations</span></article>
+      <div class="container hero-shell">
+        <div class="hero-content">
+          <p class="eyebrow">Multilingual UK Degree Guidance</p>
+          <h1>Your journey to a funded degree, handled clearly and carefully.</h1>
+          <p class="lead">We are not a university. Paesani is an independent advisory team that helps students navigate eligibility, documents, and next steps for funded UK degree routes.</p>
+          <div class="hero-actions">
+            <a href="#forms" class="btn btn-primary">Begin application</a>
+            <a href="#journey" class="btn btn-secondary">See your journey</a>
+          </div>
+          <ul class="hero-points">
+            <li>One dedicated advisor from first call to submission.</li>
+            <li>Clear progress updates so you always know what comes next.</li>
+            <li>Support available in English, Ukrainian, and EU languages.</li>
+          </ul>
         </div>
+        <aside class="hero-visual" aria-label="Students reviewing applications with advisor">
+          <div class="metric-card">
+            <strong>Trusted by students who need clarity, speed, and support.</strong>
+            <div class="metric-grid">
+              <div><strong>48h</strong><span>Typical first eligibility response</span></div>
+              <div><strong>1:1</strong><span>Advisor support for every student</span></div>
+              <div><strong>UK GDPR</strong><span>Data privacy-first case handling</span></div>
+              <div><strong>Step-by-step</strong><span>Transparent, no-guesswork process</span></div>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="section" id="platform">
+    <section class="section" id="support">
       <div class="container">
-        <h2>What makes this enterprise-grade</h2>
-        <p class="sub">Built for trust, scale, and decision clarity: structured qualification logic, auditable communication, and transparent applicant outcomes.</p>
+        <h2>What we do for students</h2>
+        <p class="sub">Our role is advisory and operational support: helping you understand options, prepare strong applications, and avoid common mistakes during submission.</p>
         <div class="grid">
-          <article class="card"><h3>Rules-based eligibility</h3><p>Initial checks use clear criteria mapping nationality, residency, and funding routes before advisor review.</p></article>
-          <article class="card"><h3>Case lifecycle visibility</h3><p>Each applicant receives stage tracking from pre-screening to enrollment confirmation.</p></article>
-          <article class="card"><h3>Operational controls</h3><p>Document verification gates reduce rework and support higher submission quality.</p></article>
-          <article class="card"><h3>Risk and compliance</h3><p>Privacy-forward workflows, least-data collection, and legal policy references on every conversion path.</p></article>
+          <article class="card"><h3>Eligibility pre-check</h3><p>We map your profile to likely funded routes before you spend time on full applications.</p></article>
+          <article class="card"><h3>Document preparation</h3><p>We help you prepare complete, consistent files to reduce delays and resubmissions.</p></article>
+          <article class="card"><h3>Application coordination</h3><p>You get guided checkpoints so every stage is clear, tracked, and understandable.</p></article>
+          <article class="card"><h3>Multilingual communication</h3><p>You can progress with support in English, Ukrainian, and key EU languages.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section process" id="process">
+    <section class="section" id="journey">
       <div class="container">
-        <h2>Structured delivery process</h2>
-        <p class="sub">A repeatable operating model designed for dependable outcomes.</p>
-        <div class="card">
-          <ol>
-            <li><strong>Qualification intake:</strong> collect only required data for funding and admissions decisioning.</li>
-            <li><strong>Advisor validation:</strong> trained specialist confirms route fit and evidence requirements.</li>
-            <li><strong>Application assembly:</strong> quality checks run before each external submission.</li>
-            <li><strong>Post-submission support:</strong> applicant receives next-step guidance until enrolment.</li>
-          </ol>
+        <h2>Your student journey</h2>
+        <p class="sub">Simple, structured, and designed around real student decisions — not internal jargon.</p>
+        <div class="card journey">
+          <div class="step"><span>1</span><div><strong>Choose the right form</strong><br />Referral partner or direct student application.</div></div>
+          <div class="step"><span>2</span><div><strong>Complete a guided pre-assessment</strong><br />We confirm your route fit and required evidence.</div></div>
+          <div class="step"><span>3</span><div><strong>Prepare your full application pack</strong><br />We review documents and highlight improvements before submission.</div></div>
+          <div class="step"><span>4</span><div><strong>Submit with confidence</strong><br />You receive next-step guidance until enrolment updates arrive.</div></div>
         </div>
       </div>
     </section>
-
 
     <section class="section" id="forms">
       <div class="container">
-        <h2>Start with the right form</h2>
-        <p class="sub">Choose the path that matches your intent: referral partner submissions or direct student applications.</p>
-        <div class="grid">
+        <h2>Apply or refer</h2>
+        <p class="sub">Use the path that matches your goal. Both forms are secure and reviewed by our advisory team.</p>
+        <div class="forms-wrap">
           <article class="card">
             <h3>Referral form</h3>
-            <p style="margin-bottom:14px;">For partners and community referrers introducing eligible prospects.</p>
+            <p style="margin-bottom:14px;">For partners introducing students who may qualify for funded UK degree routes.</p>
             <div data-tf-live="01KQR9F15KZ21YG3QEG89W0XZC"></div>
           </article>
           <article class="card">
             <h3>Application form</h3>
-            <p style="margin-bottom:14px;">For prospective students ready to begin eligibility and admissions support.</p>
+            <p style="margin-bottom:14px;">For students ready to begin their pre-assessment and application journey.</p>
             <div data-tf-live="01KQR0HAC8MXPZ5EC7GE3HEXPW"></div>
           </article>
         </div>
@@ -201,12 +335,12 @@
       <div class="container">
         <div class="cta">
           <div>
-            <h2 style="margin:0 0 8px">Compliance and legal readiness</h2>
-            <p class="sub" style="margin:0">Review our governance docs before sharing your data.</p>
+            <h2 style="margin:0 0 8px">Legal, privacy, and trust</h2>
+            <p class="sub" style="margin:0">Please review our legal documents before submitting personal information.</p>
           </div>
           <div>
-            <a href="privacy.html" class="btn" style="background:#eef3ff;color:#11306d;text-decoration:none;display:inline-block">Privacy Policy</a>
-            <a href="terms.html" class="btn" style="background:#eef3ff;color:#11306d;text-decoration:none;display:inline-block">Terms of Service</a>
+            <a href="privacy.html" class="btn btn-secondary">Privacy Policy</a>
+            <a href="terms.html" class="btn btn-secondary">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -217,9 +351,10 @@
     <div class="container">
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <p>© 2026 Paesani Consulting Ltd. Admissions support only; no legal or financial advice.</p>
+      <p>© 2026 Paesani Consulting Ltd. Independent advisory service. We are not a university and do not provide legal or financial advice.</p>
     </div>
   </footer>
+
   <script src="//embed.typeform.com/next/embed.js"></script>
 </body>
 </html>
