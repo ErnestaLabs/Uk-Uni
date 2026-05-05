@@ -1,32 +1,1253 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paesani | Guided UK Degree Pathways</title>
-  <meta name="description" content="Independent student advisory support for UK degree pathways." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paesani | Fully Funded UK Degrees</title>
+  <meta name="description" content="British nationals, EU citizens with 3+ years in the UK, and Ukrainian refugees may qualify for a fully government-funded UK university degree.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#f7f4ef;--card:#fff;--ink:#1f1a15;--muted:#5f564d;--brand:#2d6a4f;--line:#e2d9cc}
-    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}.top{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:14px}.brand{font-weight:700;color:var(--ink);text-decoration:none}
-    .links{display:flex;gap:16px;flex-wrap:wrap}.links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:14px}
-    .btn{text-decoration:none;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
-    section{padding:48px 0}.hero h1{font-size:clamp(2rem,4vw,3rem)}.lead{font-size:1.1rem;color:#2f2923;max-width:900px}
-    .cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
-    .trust{background:#f8f1e6;border:1px solid #e6d7bb;padding:12px;border-radius:12px;font-size:14px;margin-top:14px}
-    footer{border-top:1px solid var(--line);padding:28px 0 40px}.small{font-size:13px;color:var(--muted)}
+    /* ── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --ink:       #07080E;
+      --navy:      #0B1535;
+      --navy-2:    #0F1D48;
+      --navy-3:    #162550;
+      --gold:      #C8973C;
+      --gold-2:    #E4B860;
+      --gold-pale: #FBF5E6;
+      --cream:     #F8F4EE;
+      --white:     #FFFFFF;
+      --green:     #176238;
+      --green-2:   #1D7D4A;
+      --g1:        #F0EDE6;
+      --g2:        #DDD8CE;
+      --g3:        #A8A29A;
+      --g4:        #6D6760;
+      --g5:        #3A3730;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+      --ease:  cubic-bezier(.22,.68,0,1.2);
+    }
+
+    /* ── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE-LOAD ANIMATION ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+    .a1 { animation: fadeUp .65s ease .08s both; }
+    .a2 { animation: fadeUp .65s ease .22s both; }
+    .a3 { animation: fadeUp .65s ease .36s both; }
+    .a4 { animation: fadeUp .65s ease .50s both; }
+    .a5 { animation: fadeUp .65s ease .64s both; }
+    .a6 { animation: fadeIn .8s ease .72s both; }
+
+    /* ── SCROLL REVEAL ───────────────────────────────────── */
+    .reveal {
+      opacity:0;
+      transform:translateY(32px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.vis { opacity:1; transform:none; }
+    .reveal-d1 { transition-delay:.08s; }
+    .reveal-d2 { transition-delay:.16s; }
+    .reveal-d3 { transition-delay:.24s; }
+    .reveal-d4 { transition-delay:.32s; }
+
+    /* ── TOP BAR ─────────────────────────────────────────── */
+    .topbar {
+      background: var(--gold);
+      color: var(--ink);
+      text-align: center;
+      padding: .55rem 1rem;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .topbar a { color: var(--ink); text-decoration: underline; }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(11,21,53,.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: .8rem 0;
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.4); }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+    }
+    .logo {
+      font-family: var(--serif); font-size: 1.4rem; color: var(--white);
+      text-decoration: none; letter-spacing: -.01em; flex-shrink: 0;
+    }
+    .logo span { color: var(--gold-2); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.5);
+      text-decoration: none; transition: color .2s; letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--white); }
+    @media (max-width:860px) { .nav-links { display:none; } }
+
+    .lang-toggle {
+      display: flex; align-items: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 100px; padding: .2rem;
+      gap: .15rem;
+    }
+    .lang-btn {
+      font-size: .72rem; font-weight: 700;
+      color: rgba(255,255,255,.45);
+      background: transparent; border: none;
+      border-radius: 100px; padding: .3rem .65rem;
+      cursor: pointer; transition: background .18s, color .18s;
+      display: flex; align-items: center; gap: .3rem;
+      white-space: nowrap; letter-spacing: .03em;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--ink); }
+    .lang-btn:not(.active):hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--green); color: var(--white);
+      padding: .52rem 1.25rem; border-radius: 100px;
+      font-size: .82rem; font-weight: 700; text-decoration: none;
+      letter-spacing: .01em; white-space: nowrap;
+      transition: background .2s, transform .15s;
+      border: none; cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--green-2); transform: translateY(-1px); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 6rem 2rem 0;
+      position: relative; overflow: hidden;
+      text-align: center;
+      clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
+      padding-bottom: 8rem;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .hero-glow {
+      position: absolute; pointer-events: none;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,151,60,.13) 0%, transparent 70%);
+      top: -200px; left: 50%; transform: translateX(-50%);
+    }
+    .hero-inner {
+      max-width: 820px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+      color: var(--gold-2);
+      margin-bottom: 1.75rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: rgba(228,184,96,.4);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 1.04; font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.02em;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--gold-2);
+    }
+    .hero-sub {
+      font-size: 1.08rem; color: rgba(255,255,255,.55);
+      line-height: 1.85; max-width: 600px;
+      margin: 0 auto 2rem; font-weight: 400;
+    }
+    .hero-sub strong { color: rgba(255,255,255,.85); font-weight: 600; }
+    .hero-chips {
+      display: flex; justify-content: center; gap: .6rem;
+      flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .chip {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: .38rem 1rem; border-radius: 100px;
+      font-size: .78rem; font-weight: 600;
+      color: rgba(255,255,255,.75);
+      transition: background .2s, border-color .2s;
+    }
+    .chip:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); }
+    .hero-ctas {
+      display: flex; justify-content: center; gap: .85rem;
+      flex-wrap: wrap; margin-bottom: 3.5rem;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--green); color: var(--white);
+      padding: .95rem 2.25rem; border-radius: 100px;
+      font-size: 1rem; font-weight: 700; text-decoration: none;
+      letter-spacing: .01em;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover {
+      background: var(--green-2); transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(23,98,56,.4);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: rgba(255,255,255,.65);
+      padding: .95rem 2.25rem; border-radius: 100px;
+      font-size: 1rem; font-weight: 600; text-decoration: none;
+      border: 1px solid rgba(255,255,255,.18);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,.07); color: var(--white);
+      border-color: rgba(255,255,255,.3);
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 2.5rem;
+      max-width: 600px; margin: 0 auto;
+    }
+    .hero-stat {
+      flex: 1; text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-val {
+      font-family: var(--serif); font-size: 2rem; color: var(--gold-2);
+      line-height: 1; margin-bottom: .3rem; display: block;
+    }
+    .hero-stat-label {
+      font-size: .72rem; color: rgba(255,255,255,.35);
+      font-weight: 500; text-transform: uppercase; letter-spacing: .07em;
+    }
+    @media (max-width:580px) {
+      .hero { clip-path: none; padding-bottom: 5rem; }
+      .hero h1 { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+      .hero-stat { padding: 0 .75rem; }
+      .hero-stat-val { font-size: 1.5rem; }
+    }
+
+    /* ── SECTION UTILITIES ───────────────────────────────── */
+    .section-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section-wrap-narrow { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+    .tag {
+      display: inline-block; font-size: .68rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--gold); margin-bottom: .75rem;
+    }
+    .h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.8vw, 2.85rem);
+      line-height: 1.1; margin-bottom: .85rem;
+      letter-spacing: -.02em;
+    }
+    .h2.light { color: var(--white); }
+    .lead {
+      font-size: 1.02rem; color: var(--g4);
+      line-height: 1.82; font-weight: 400;
+      max-width: 540px; margin: 0 auto;
+    }
+    .lead.light { color: rgba(255,255,255,.5); }
+    .tac { text-align: center; }
+
+    /* ── "WHY HAVEN'T YOU" ────────────────────────────────── */
+    .why-not {
+      background: var(--cream);
+      padding: 5rem 2rem;
+    }
+    .why-not-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center;
+    }
+    .why-not-text .h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 1.1rem; }
+    .why-not-text p {
+      font-size: 1rem; color: var(--g4); line-height: 1.85;
+      margin-bottom: 1rem; font-weight: 400;
+    }
+    .why-not-text p strong { color: var(--ink); font-weight: 700; }
+    .blockers { list-style: none; display: flex; flex-direction: column; gap: .85rem; margin-top: 1.5rem; }
+    .blocker {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--white); border: 1.5px solid var(--g2);
+      border-radius: 14px; padding: 1.1rem 1.25rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .blocker:hover { border-color: var(--gold); box-shadow: 0 4px 18px rgba(0,0,0,.06); }
+    .blocker-x {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(200,151,60,.1); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .blocker-body strong { display: block; font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: .2rem; }
+    .blocker-body span { font-size: .83rem; color: var(--g4); line-height: 1.6; }
+    @media (max-width: 860px) { .why-not-inner { grid-template-columns:1fr; gap:2.5rem; } }
+
+    /* ── AUDIENCE ─────────────────────────────────────────── */
+    .audience { padding: 5.5rem 2rem 5rem; background: var(--white); }
+    .audience-grid {
+      max-width: 1100px; margin: 2.5rem auto 0;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem;
+    }
+    .aud-card {
+      border: 1.5px solid var(--g2); border-radius: 20px;
+      padding: 2rem 1.75rem; position: relative; overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+    }
+    .aud-card::after {
+      content: ''; position: absolute; inset: 0 0 auto;
+      height: 3px;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .aud-card:hover { transform: translateY(-5px); box-shadow: 0 18px 52px rgba(0,0,0,.09); border-color: var(--gold); }
+    .aud-card:hover::after { transform: scaleX(1); }
+    .aud-card::after { background: var(--gold); }
+    .aud-flag { font-size: 2.4rem; display: block; margin-bottom: 1.1rem; }
+    .aud-card h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--ink); margin-bottom: .55rem; line-height: 1.15; }
+    .aud-card p { font-size: .875rem; color: var(--g4); line-height: 1.75; }
+    .aud-card p strong { color: var(--ink); font-weight: 700; }
+    .aud-tag {
+      display: inline-block; margin-top: 1.25rem;
+      font-size: .68rem; font-weight: 800; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--green);
+      background: rgba(23,98,56,.07); border: 1px solid rgba(23,98,56,.18);
+      padding: .22rem .7rem; border-radius: 100px;
+    }
+    @media (max-width:860px) { .audience-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:540px) { .audience-grid { grid-template-columns:1fr; } }
+
+    /* ── STATS ───────────────────────────────────────────── */
+    .stats {
+      background: var(--navy);
+      padding: 3.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      text-align: center;
+    }
+    .stat-item {
+      padding: 1rem 2rem;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-val {
+      font-family: var(--serif); font-size: 2.6rem;
+      color: var(--gold-2); line-height: 1;
+      margin-bottom: .4rem; display: block;
+    }
+    .stat-label { font-size: .76rem; color: rgba(255,255,255,.35); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; }
+    @media (max-width:600px) {
+      .stats-inner { grid-template-columns:1fr; gap:2rem; }
+      .stat-item { border-right:none; border-bottom:1px solid rgba(255,255,255,.08); padding-bottom:2rem; }
+      .stat-item:last-child { border-bottom:none; padding-bottom:0; }
+    }
+
+    /* ── COURSES ─────────────────────────────────────────── */
+    .courses { padding: 6rem 2rem; background: var(--cream); }
+    .courses-grid {
+      max-width: 1150px; margin: 2.5rem auto 0;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+    }
+    .course-card {
+      background: var(--white); border: 1.5px solid var(--g2);
+      border-radius: 16px; padding: 1.5rem 1.35rem;
+      display: flex; flex-direction: column; gap: .55rem;
+      transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
+      cursor: default;
+    }
+    .course-card:hover {
+      transform: translateY(-3px); box-shadow: 0 10px 34px rgba(0,0,0,.08);
+      border-color: var(--gold-2);
+    }
+    .course-icon { font-size: 1.55rem; display: block; }
+    .course-card h4 { font-family: var(--serif); font-size: .97rem; color: var(--navy); line-height: 1.25; }
+    .course-level { font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--g3); }
+    .course-badge {
+      font-size: .66rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--green);
+      background: rgba(23,98,56,.07); border: 1px solid rgba(23,98,56,.18);
+      padding: .18rem .55rem; border-radius: 100px; width: fit-content;
+    }
+    .intl-note {
+      max-width: 1150px; margin: 1.5rem auto 0;
+      background: var(--gold-pale); border: 1px solid rgba(200,151,60,.2);
+      border-radius: 12px; padding: 1.2rem 1.6rem;
+      display: flex; gap: 1rem; align-items: center;
+      font-size: .875rem; color: var(--g5); line-height: 1.65;
+    }
+    .intl-note strong { color: var(--ink); }
+    @media (max-width:1100px) { .courses-grid { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:768px)  { .courses-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:480px)  { .courses-grid { grid-template-columns:1fr; } }
+
+    /* ── FUTURE PACE ─────────────────────────────────────── */
+    .future-pace {
+      background: var(--navy);
+      padding: 6rem 2rem 5rem;
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -3rem;
+      position: relative;
+    }
+    .fp-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .fp-text .tag { color: var(--gold-2); }
+    .fp-text .h2 { color: var(--white); font-size: clamp(1.9rem, 3.5vw, 2.8rem); margin-bottom: 1rem; }
+    .fp-text p { font-size: 1rem; color: rgba(255,255,255,.5); line-height: 1.85; margin-bottom: 1rem; }
+    .fp-text p strong { color: var(--white); font-weight: 600; }
+    .fp-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; margin-top: 1.5rem; }
+    .fp-item {
+      display: flex; align-items: center; gap: .85rem;
+      font-size: .92rem; color: rgba(255,255,255,.7); font-weight: 500;
+    }
+    .fp-item::before {
+      content: '→'; color: var(--gold-2); font-size: .85rem; flex-shrink: 0;
+    }
+    .fp-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .fp-quote {
+      font-family: var(--serif); font-size: 1.55rem; color: var(--white);
+      line-height: 1.35; margin-bottom: 1.5rem; font-style: italic;
+    }
+    .fp-quote span { color: var(--gold-2); font-style: normal; }
+    .fp-dots {
+      display: flex; flex-direction: column; gap: .85rem;
+    }
+    .fp-dot {
+      display: flex; align-items: flex-start; gap: .85rem;
+      font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.6;
+    }
+    .fp-dot-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(200,151,60,.12); border: 1px solid rgba(200,151,60,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; flex-shrink: 0;
+    }
+    @media (max-width:860px) { .fp-grid { grid-template-columns:1fr; gap:3rem; } .future-pace { clip-path:none; margin-top:0; } }
+
+    /* ── FUNDING ─────────────────────────────────────────── */
+    .funding { padding: 6rem 2rem; background: var(--white); }
+    .steps {
+      max-width: 860px; margin: 2.5rem auto 0;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0; position: relative;
+    }
+    .steps::before {
+      content: ''; position: absolute; top: 22px;
+      left: calc(16.7% + 1rem); right: calc(16.7% + 1rem);
+      height: 1px;
+      background: linear-gradient(90deg, var(--g2), var(--gold), var(--g2));
+    }
+    .step { text-align: center; padding: 0 1.5rem; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: var(--gold-2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1.25rem;
+      margin: 0 auto 1.5rem; position: relative; z-index: 1;
+      border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--navy);
+    }
+    .step h3 { font-family: var(--serif); font-size: 1.05rem; margin-bottom: .55rem; color: var(--ink); }
+    .step p { font-size: .855rem; color: var(--g4); line-height: 1.75; }
+    .fund-note {
+      max-width: 860px; margin: 2.5rem auto 0;
+      background: var(--gold-pale); border: 1px solid rgba(200,151,60,.2);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      font-size: .875rem; color: var(--g5); line-height: 1.75;
+    }
+    .fund-note strong { color: var(--ink); }
+    @media (max-width:700px) {
+      .steps { grid-template-columns:1fr; gap:2rem; }
+      .steps::before { display:none; }
+      .step { padding:0; }
+    }
+
+    /* ── REFERRAL ─────────────────────────────────────────── */
+    .referral {
+      background: var(--ink); padding: 6rem 2rem;
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+      margin: -3rem 0;
+      position: relative; overflow: hidden;
+    }
+    .ref-glow {
+      position: absolute; pointer-events: none;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,151,60,.1) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+    }
+    .ref-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .ref-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .68rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--gold-2);
+      border: 1px solid rgba(228,184,96,.25);
+      padding: .3rem .9rem; border-radius: 100px;
+      background: rgba(228,184,96,.07); margin-bottom: 1.25rem;
+    }
+    .ref-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white); line-height: 1.08;
+      margin-bottom: 1.1rem; letter-spacing: -.02em;
+    }
+    .ref-inner h2 em { color: var(--gold-2); font-style: italic; }
+    .ref-inner p { font-size: 1rem; color: rgba(255,255,255,.5); line-height: 1.82; margin-bottom: 1.75rem; }
+    .ref-steps { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .ref-step { display: flex; align-items: flex-start; gap: 1rem; font-size: .88rem; color: rgba(255,255,255,.65); }
+    .ref-step-n {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(200,151,60,.12); border: 1px solid rgba(200,151,60,.25);
+      color: var(--gold-2); font-size: .78rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ref-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px; padding: 2.75rem;
+      text-align: center;
+    }
+    .ref-amount {
+      font-family: var(--serif); font-size: 5.5rem;
+      color: var(--gold-2); line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .ref-sub { font-size: .82rem; color: rgba(255,255,255,.35); margin-bottom: 2rem; line-height: 1.6; }
+    .btn-gold {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      background: var(--gold); color: var(--ink);
+      padding: .9rem 1.5rem; border-radius: 100px;
+      font-size: .92rem; font-weight: 800; text-decoration: none;
+      transition: filter .2s, transform .15s; width: 100%;
+    }
+    .btn-gold:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .ref-fine { font-size: .72rem; color: rgba(255,255,255,.2); margin-top: 1rem; line-height: 1.6; }
+    @media (max-width:860px) { .ref-inner { grid-template-columns:1fr; gap:3rem; } .referral { clip-path:none; margin:0; } }
+
+    /* ── APPLY ───────────────────────────────────────────── */
+    .apply { padding: 6rem 2rem 5rem; background: var(--cream); }
+    .apply-inner { max-width: 820px; margin: 2rem auto 0; }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq { padding: 5rem 2rem 6rem; background: var(--white); }
+    .faq-list {
+      max-width: 720px; margin: 2.5rem auto 0;
+      border: 1.5px solid var(--g2); border-radius: 16px; overflow: hidden;
+    }
+    .faq-item { border-bottom: 1.5px solid var(--g2); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      width: 100%; background: var(--white); border: none; text-align: left;
+      font-family: var(--sans); font-size: .945rem; font-weight: 600;
+      color: var(--ink); padding: 1.25rem 1.6rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; transition: background .15s; line-height: 1.4;
+    }
+    .faq-q:hover { background: var(--g1); }
+    .faq-icon {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      background: var(--g1); border: 1px solid var(--g2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; color: var(--navy-2);
+      transition: transform .3s, background .2s, border-color .2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; background: var(--g1); }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 1.1rem 1.6rem 1.4rem; font-size: .88rem; color: var(--g5); line-height: 1.85; }
+
+    /* ── CTA FINAL ───────────────────────────────────────── */
+    .cta-final {
+      background: var(--green); padding: 5.5rem 2rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(255,255,255,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final-inner { max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
+    .cta-final h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      color: var(--white); margin-bottom: 1rem; line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    .cta-final p { color: rgba(255,255,255,.65); font-size: 1.02rem; margin-bottom: 2.25rem; line-height: 1.78; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--white); color: var(--green);
+      padding: 1rem 2.25rem; border-radius: 100px;
+      font-size: 1rem; font-weight: 800; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,.3);
+      padding: 3rem 2rem; text-align: center;
+      font-size: .76rem; line-height: 1.9;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.4rem;
+      color: rgba(255,255,255,.3); display: block; margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .footer-links a { color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-disc { max-width: 680px; margin: 0 auto 1rem; font-size: .72rem; color: rgba(255,255,255,.18); line-height: 1.85; }
+
+    /* ── MOBILE CTA ──────────────────────────────────────── */
+    .mob-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 1rem; background: var(--white);
+      border-top: 1px solid var(--g2); z-index: 300;
+      box-shadow: 0 -4px 24px rgba(0,0,0,.1);
+    }
+    .mob-cta a {
+      display: block; width: 100%; background: var(--green); color: var(--white);
+      padding: .9rem; border-radius: 100px;
+      font-size: .95rem; font-weight: 700; text-align: center; text-decoration: none;
+    }
+    @media (max-width:768px) { .mob-cta { display: block; } footer { padding-bottom: 6rem; } }
   </style>
 </head>
 <body>
-<header class="top"><div class="wrap nav"><a class="brand" href="#">Paesani Independent Student Advisory</a><nav class="links"><a href="#support">Support</a><a href="#journey">Journey</a><a href="#forms">Forms</a><a href="#legal">Legal</a></nav><a class="btn" href="#forms">Start</a></div></header>
-<main class="wrap">
-<section class="hero" id="support"><p><strong>Guided UK Degree Pathways</strong></p><h1>Turn application uncertainty into a clear next move.</h1><p class="lead">Paesani is not a university. We are an independent advisory team helping students prepare and submit stronger UK degree applications.</p><div class="trust"><strong>PAESANI CONSULTING LTD</strong> · Company Number 17195580 · Registered office: 66, Paul Street, London, EC2A 4NA · Independent advisory service (not a university).</div></section>
-<section><h2>What we deliver</h2><div class="cardgrid"><article class="card"><h3>Route-fit screening</h3><p>Early checks reduce unsuitable applications.</p></article><article class="card"><h3>Application pack review</h3><p>We help close evidence gaps before submission.</p></article><article class="card"><h3>Progress coordination</h3><p>Clear next-step guidance at each stage.</p></article><article class="card"><h3>Multilingual support</h3><p>Guidance across English and EU-language contexts.</p></article></div></section>
-<section id="journey"><h2>Your journey, step by step</h2><ol><li>Choose student application or referral route.</li><li>Complete pre-assessment.</li><li>Refine documents and submit.</li><li>Receive progression support.</li></ol></section>
-<section id="forms"><h2>Apply or refer</h2><div class="cardgrid"><article class="card"><h3>Referral form</h3><p>For partners introducing potential applicants.</p></article><article class="card"><h3>Application form</h3><p>For students ready to start.</p></article></div></section>
-<section id="legal"><h2>Legal and privacy</h2><p><a href="privacy.html">Privacy Policy (Updated 4 May 2026)</a> · <a href="terms.html">Terms of Service (Updated 4 May 2026)</a></p></section>
-</main>
-<footer><div class="wrap"><p class="small"><a href="privacy.html">Privacy (Updated 4 May 2026)</a> · <a href="terms.html">Terms (Updated 4 May 2026)</a></p><p class="small">© 2026 Paesani Consulting Ltd. Independent advisory service — not a university.</p></div></footer>
+
+  <!-- TOP BAR -->
+  <div class="topbar" data-i18n="topbar">
+    🎯 Eligibility check takes 60 seconds — and it's completely free
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">Paes<span>ani</span></a>
+      <nav class="nav-links">
+        <a href="#courses"  data-i18n="nav_courses">Courses</a>
+        <a href="#funding"  data-i18n="nav_funding">Funding</a>
+        <a href="#referral" data-i18n="nav_referral">Refer &amp; Earn</a>
+        <a href="#faq"      data-i18n="nav_faq">FAQ</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button>
+          <button class="lang-btn" data-lang="it" onclick="setLang('it')">🇮🇹 IT</button>
+          <button class="lang-btn" data-lang="uk" onclick="setLang('uk')">🇺🇦 UA</button>
+        </div>
+        <a href="#apply" class="nav-cta" data-i18n="nav_cta">Apply Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow a1" data-i18n="hero_eyebrow">Student Finance England · UK Government Funded</div>
+      <h1 class="a2" data-i18n="hero_h1">You already qualify.<br><em>You just need<br>to claim it.</em></h1>
+      <p class="hero-sub a3" data-i18n="hero_sub">
+        If you're <strong>British</strong>, an <strong>EU national with 3+ years in the UK</strong>, or a <strong>Ukrainian refugee</strong> — the government will fund your entire university education. Zero upfront. Zero until you earn over £25,000.
+      </p>
+      <div class="hero-chips a4">
+        <span class="chip">🇬🇧 <span data-i18n="chip_british">British Nationals</span></span>
+        <span class="chip">🇪🇺 <span data-i18n="chip_eu">EU · 3+ Years</span></span>
+        <span class="chip">🇺🇦 <span data-i18n="chip_ua">Ukrainian Refugees</span></span>
+      </div>
+      <div class="hero-ctas a5">
+        <a href="#apply"   class="btn-primary" data-i18n="hero_cta">Check My Eligibility →</a>
+        <a href="#courses" class="btn-ghost"   data-i18n="hero_courses">Browse Courses</a>
+      </div>
+      <div class="hero-stats a6">
+        <div class="hero-stat">
+          <span class="hero-stat-val">£0</span>
+          <span class="hero-stat-label" data-i18n="stat1_label">Upfront cost</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">12+</span>
+          <span class="hero-stat-label" data-i18n="stat2_label">Degrees available</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">£300</span>
+          <span class="hero-stat-label" data-i18n="stat3_label">Per referral</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY HAVEN'T YOU -->
+  <section class="why-not" id="eligibility">
+    <div class="why-not-inner">
+      <div class="why-not-text reveal">
+        <span class="tag" data-i18n="why_tag">The honest question</span>
+        <h2 class="h2" data-i18n="why_h2">Why haven't you done this already?</h2>
+        <p data-i18n="why_p1"><strong>Not because you can't.</strong> Because nobody told you.</p>
+        <p data-i18n="why_p2">Most people in your position have no idea they qualify. They assume university is for someone else — someone younger, someone with more money, someone who didn't drop out. That assumption is wrong, and it's costing you.</p>
+        <p data-i18n="why_p3">Here are the three things that stop people. Here's why none of them apply to you.</p>
+      </div>
+      <ul class="blockers">
+        <li class="blocker reveal reveal-d1">
+          <div class="blocker-x">✕</div>
+          <div class="blocker-body">
+            <strong data-i18n="b1_title">"I don't know if I qualify"</strong>
+            <span data-i18n="b1_body">If you're British, EU with 3+ years, or Ukrainian under a government scheme — you do. Our free check confirms it in 60 seconds.</span>
+          </div>
+        </li>
+        <li class="blocker reveal reveal-d2">
+          <div class="blocker-x">✕</div>
+          <div class="blocker-body">
+            <strong data-i18n="b2_title">"I can't afford university"</strong>
+            <span data-i18n="b2_body">You pay nothing upfront. Student Finance England pays your tuition directly to the university. You never see that money leave your account.</span>
+          </div>
+        </li>
+        <li class="blocker reveal reveal-d3">
+          <div class="blocker-x">✕</div>
+          <div class="blocker-body">
+            <strong data-i18n="b3_title">"I don't have time to study"</strong>
+            <span data-i18n="b3_body">Every programme we offer is flexible. Part-time, online-first, built around people who work. You don't quit your job. You study around it.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience">
+    <div class="tac reveal">
+      <span class="tag" data-i18n="aud_tag">Eligibility</span>
+      <h2 class="h2" data-i18n="aud_h2">Which one are you?</h2>
+      <p class="lead" data-i18n="aud_sub">Three groups of people have the same right to a government-funded UK degree. Find yours.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-card reveal reveal-d1">
+        <span class="aud-flag">🇬🇧</span>
+        <h3 data-i18n="aud1_h3">British Nationals</h3>
+        <p data-i18n="aud1_p">UK citizens and those with <strong>Indefinite Leave to Remain</strong> are fully entitled to Student Finance England for any undergraduate or postgraduate course.</p>
+        <span class="aud-tag" data-i18n="aud1_tag">Fully Eligible</span>
+      </div>
+      <div class="aud-card reveal reveal-d2">
+        <span class="aud-flag">🇪🇺</span>
+        <h3 data-i18n="aud2_h3">EU / European Citizens</h3>
+        <p data-i18n="aud2_p">Hold <strong>Pre-Settled or Settled Status</strong> and have lived in the UK for <strong>3+ continuous years</strong>? You qualify for identical funding to any UK student — regardless of nationality.</p>
+        <span class="aud-tag" data-i18n="aud2_tag">3+ Years Required</span>
+      </div>
+      <div class="aud-card reveal reveal-d3">
+        <span class="aud-flag">🇺🇦</span>
+        <h3 data-i18n="aud3_h3">Ukrainian Refugees</h3>
+        <p data-i18n="aud3_p">Under <strong>Homes for Ukraine</strong> and the <strong>Ukraine Family Scheme</strong>, Ukrainian nationals with permission to stay in the UK may access full government student funding.</p>
+        <span class="aud-tag" data-i18n="aud3_tag">Ukraine Schemes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal reveal-d1">
+        <span class="stat-val" data-count="0" data-prefix="£">£0</span>
+        <span class="stat-label" data-i18n="stat1_label">Upfront cost to study</span>
+      </div>
+      <div class="stat-item reveal reveal-d2">
+        <span class="stat-val" data-count="12" data-suffix="+">12+</span>
+        <span class="stat-label" data-i18n="stat2_label">Accredited degrees</span>
+      </div>
+      <div class="stat-item reveal reveal-d3">
+        <span class="stat-val" data-count="300" data-prefix="£">£300</span>
+        <span class="stat-label" data-i18n="stat3_label">Per successful referral</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSES -->
+  <section class="courses" id="courses">
+    <div class="tac reveal">
+      <span class="tag" data-i18n="courses_tag">Our Programmes</span>
+      <h2 class="h2" data-i18n="courses_h2">Pick your degree.</h2>
+      <p class="lead" data-i18n="courses_sub">Accredited UK university degrees. Taught in English. Built around your life.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal reveal-d1"><span class="course-icon">🏥</span><span class="course-badge" data-i18n="badge_pop">Popular</span><h4>BSc (Hons) Health &amp; Social Care</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d2"><span class="course-icon">📊</span><h4>BSc (Hons) Digital Marketing</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d3"><span class="course-icon">🏗️</span><h4>BSc (Hons) Construction Management</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d4"><span class="course-icon">👗</span><h4>BSc (Hons) Fashion Management &amp; Strategy</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d1"><span class="course-icon">⚖️</span><h4>Bachelor of Laws (LLB)</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d2"><span class="course-icon">👶</span><h4>BA (Hons) Education &amp; Childhood</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d3"><span class="course-icon">💻</span><h4>BSc (Hons) IT / Computing</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d4"><span class="course-icon">🧠</span><h4>BSc (Hons) Psychology or Mental Health</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d1"><span class="course-icon">💰</span><h4>BSc (Hons) Accounting &amp; Finance</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d2"><span class="course-icon">🔐</span><h4>BSc (Hons) Cyber Security</h4><span class="course-level">Undergraduate</span></div>
+      <div class="course-card reveal reveal-d3"><span class="course-icon">📚</span><h4 data-i18n="course_foundation">Foundation Year or Degree</h4><span class="course-level" data-i18n="level_foundation">Foundation</span></div>
+      <div class="course-card reveal reveal-d4"><span class="course-icon">🎓</span><h4 data-i18n="course_masters">Master &amp; Top-up Degrees</h4><span class="course-level" data-i18n="level_masters">Postgraduate</span></div>
+    </div>
+    <div class="intl-note reveal">
+      <span style="font-size:1.3rem;flex-shrink:0">🌍</span>
+      <span data-i18n="intl_note"><strong>International students:</strong> We occasionally help international students too — if you don't fit the standard criteria, reach out anyway. We'll explore every option for you.</span>
+    </div>
+  </section>
+
+  <!-- FUTURE PACE -->
+  <section class="future-pace">
+    <div class="fp-grid">
+      <div class="fp-text reveal">
+        <span class="tag" data-i18n="fp_tag">What changes</span>
+        <h2 class="h2 light" data-i18n="fp_h2">Imagine that version of yourself.</h2>
+        <p data-i18n="fp_p1">The one with the degree. Picture the moment you walk into a room and the letters after your name are already doing half the work. What does that feel like?</p>
+        <p data-i18n="fp_p2"><strong>Now picture what happens if you don't.</strong> Same ceiling. Same job. Two days, two weeks, two months, two years from now — the view from the island doesn't change unless you start swimming.</p>
+        <ul class="fp-list">
+          <li data-i18n="fp_l1">Your CV competes differently</li>
+          <li data-i18n="fp_l2">Your earning ceiling moves up</li>
+          <li data-i18n="fp_l3">Your kids see what's possible</li>
+          <li data-i18n="fp_l4">You stop trading time for survival</li>
+        </ul>
+      </div>
+      <div class="fp-card reveal reveal-d2">
+        <p class="fp-quote" data-i18n="fp_quote">"The most successful people have a strong <span>pull</span> toward what they want — and an equally strong <span>push</span> away from what they refuse to stay."</p>
+        <div class="fp-dots">
+          <div class="fp-dot"><div class="fp-dot-icon">🎯</div><span data-i18n="fp_d1">The government already set the money aside. The only variable is whether you claim it.</span></div>
+          <div class="fp-dot"><div class="fp-dot-icon">📅</div><span data-i18n="fp_d2">Every week you wait is a week someone else already has that degree. The funding doesn't run out — but your weeks do.</span></div>
+          <div class="fp-dot"><div class="fp-dot-icon">🔑</div><span data-i18n="fp_d3">Our job is to get you from the island to the mountain. The eligibility check is step one. It's free. It takes 60 seconds.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING -->
+  <section class="funding" id="funding">
+    <div class="tac reveal">
+      <span class="tag" data-i18n="fund_tag">Student Finance England</span>
+      <h2 class="h2" data-i18n="fund_h2">How the money works.</h2>
+      <p class="lead" data-i18n="fund_sub">The UK government covers your tuition entirely. You repay nothing until you earn over £25,000.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal reveal-d1">
+        <div class="step-num">1</div>
+        <h3 data-i18n="step1_h3">We apply with you</h3>
+        <p data-i18n="step1_p">We walk you through the Student Finance England application. About 30 minutes. We handle the complexity so you don't have to.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num">2</div>
+        <h3 data-i18n="step2_h3">Government pays tuition</h3>
+        <p data-i18n="step2_p">Student Finance England pays your fees directly to the university. That money never passes through your hands.</p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <div class="step-num">3</div>
+        <h3 data-i18n="step3_h3">Maintenance loan paid to you</h3>
+        <p data-i18n="step3_p">You also receive a maintenance loan for living costs — paid directly to your bank each term.</p>
+      </div>
+    </div>
+    <div class="fund-note reveal">
+      <span style="font-size:1.2rem;flex-shrink:0;margin-top:2px">ℹ️</span>
+      <p data-i18n="fund_note"><strong>Repayments are income-contingent.</strong> You repay 9% of earnings above £25,000 per year — only when you're earning enough to. If you never earn over the threshold, you never repay a penny. Remaining balance written off after 40 years.</p>
+    </div>
+  </section>
+
+  <!-- REFERRAL -->
+  <section class="referral" id="referral">
+    <div class="ref-glow"></div>
+    <div class="ref-inner">
+      <div class="reveal">
+        <div class="ref-tag" data-i18n="ref_tag">Referral Programme</div>
+        <h2 data-i18n="ref_h2">Know someone who qualifies?<br><em>Earn £300.</em></h2>
+        <p data-i18n="ref_p">Refer them to us. If they enrol at university and their Student Finance is confirmed — we pay you £300. No catches. No limits on how many you refer.</p>
+        <p style="font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:.75rem" data-i18n="ref_how">How it works:</p>
+        <ul class="ref-steps">
+          <li class="ref-step"><span class="ref-step-n">1</span><span data-i18n="ref_s1">Mention us to someone you know who might qualify</span></li>
+          <li class="ref-step"><span class="ref-step-n">2</span><span data-i18n="ref_s2">They apply and successfully enrol at university through us</span></li>
+          <li class="ref-step"><span class="ref-step-n">3</span><span data-i18n="ref_s3">We transfer £300 to you — straightforward</span></li>
+        </ul>
+      </div>
+      <div class="ref-card reveal reveal-d2">
+        <div class="ref-amount">£300</div>
+        <p class="ref-sub" data-i18n="ref_sub">Per successfully enrolled student.<br>No cap on referrals.</p>
+        <a href="#apply" class="btn-gold" data-i18n="ref_cta">→ Refer Someone Now</a>
+        <p class="ref-fine" data-i18n="ref_fine">Paid after enrolment confirmation and SFE approval. Subject to full referral terms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPEFORM -->
+  <section class="apply" id="apply">
+    <div class="tac reveal">
+      <span class="tag" data-i18n="apply_tag">Free Application</span>
+      <h2 class="h2" data-i18n="apply_h2">Start here. 5 minutes.</h2>
+      <p class="lead" data-i18n="apply_sub">Tell us about yourself. We'll confirm your eligibility and guide every next step.</p>
+    </div>
+    <div class="apply-inner">
+      <div data-tf-live="01KQR0HAC8MXPZ5EC7GE3HEXPW" style="min-height:520px;"></div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="tac reveal">
+      <span class="tag" data-i18n="faq_tag">Questions</span>
+      <h2 class="h2" data-i18n="faq_h2">Straight answers.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q1">Can't I just figure this out myself?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a1">You could — just like you could do your own taxes or represent yourself in court. But Student Finance England paperwork is notoriously confusing, and one wrong box can delay or deny your funding. We've done this hundreds of times. Our service is free. Why wouldn't you use us?</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q2">Do I need to have studied recently?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a2">No. Many of our students haven't been in education for years or decades. Foundation courses exist specifically for that. Your work experience and life skills count more than you think.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q3">How much will I actually repay?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a3">9% of whatever you earn above £25,000 per year. If you earn £30,000 — that's £37 a month. Earn £25,000 or less? You pay nothing that year. The loan is written off entirely after 40 years. It is not a debt in the traditional sense.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q4">Can I work while I study?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a4">Yes. Every programme we work with is designed for working adults — flexible, part-time, or blended. You do not need to quit your job.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q5">I'm EU but only 2 years in the UK — what happens?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a5">SFE requires 3 years of UK residence. If you're close, reach out now — we can assess your exact situation and tell you precisely when you'll qualify so you don't waste a day.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q6">I'm a Ukrainian refugee. Am I definitely eligible?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a6">If you hold leave to remain under the Homes for Ukraine or Ukraine Family Scheme, Student Finance England recognises your status. Eligibility depends on your specific visa. We assess every case individually — for free.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq_q7">Is Paesani's service actually free?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq_a7">Yes. We're paid by the universities we work with when you enrol — the same way a mortgage broker is paid by the lender, not the buyer. You pay nothing, ever, for our advisory service.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="cta-final-inner reveal">
+      <h2 data-i18n="cta_h2">The mountain is there.<br>Start swimming.</h2>
+      <p data-i18n="cta_p">Eligibility check is free. Takes 5 minutes. No commitment. No catch.</p>
+      <a href="#apply" class="btn-white" data-i18n="cta_btn">Check My Eligibility →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Paesani</span>
+    <div class="footer-links">
+      <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="terms.html"   data-i18n="footer_terms">Terms of Service</a>
+      <a href="mailto:hello@paesani.co.uk" data-i18n="footer_contact">Contact Us</a>
+      <a href="https://www.gov.uk/student-finance" target="_blank" rel="noopener noreferrer">Student Finance England ↗</a>
+    </div>
+    <p class="footer-disc" data-i18n="footer_disc">Paesani is a trading name of Paesani Consulting Ltd (company no. 17195580), registered at 66 Paul Street, London EC2A 4NA. Independent educational advisory service — not affiliated with the UK Government or Student Finance England. All funding subject to individual eligibility assessed by SFE.</p>
+    <p data-i18n="footer_copy">© 2025 Paesani Consulting Ltd. All rights reserved. Governed by English law.</p>
+  </footer>
+
+  <!-- MOBILE CTA -->
+  <div class="mob-cta">
+    <a href="#apply" data-i18n="mob_cta">Check My Eligibility — Free</a>
+  </div>
+
+<script>
+/* ── SCROLL & NAV ─────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 20);
+});
+
+/* ── SCROLL REVEAL ─────────────────────────────────── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── FAQ ───────────────────────────────────────────── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── TRANSLATIONS ──────────────────────────────────── */
+const T = {
+  en: {
+    topbar: '🎯 Eligibility check takes 60 seconds — and it\'s completely free',
+    nav_courses:'Courses', nav_funding:'Funding', nav_referral:'Refer &amp; Earn', nav_faq:'FAQ', nav_cta:'Apply Free',
+    hero_eyebrow:'Student Finance England · UK Government Funded',
+    hero_h1:'You already qualify.<br><em>You just need<br>to claim it.</em>',
+    hero_sub:'If you\'re <strong>British</strong>, an <strong>EU national with 3+ years in the UK</strong>, or a <strong>Ukrainian refugee</strong> — the government will fund your entire university education. Zero upfront. Zero until you earn over £25,000.',
+    hero_cta:'Check My Eligibility →', hero_courses:'Browse Courses',
+    chip_british:'British Nationals', chip_eu:'EU · 3+ Years', chip_ua:'Ukrainian Refugees',
+    stat1_label:'Upfront cost', stat2_label:'Degrees available', stat3_label:'Per referral',
+    why_tag:'The honest question',
+    why_h2:'Why haven\'t you done this already?',
+    why_p1:'<strong>Not because you can\'t.</strong> Because nobody told you.',
+    why_p2:'Most people in your position have no idea they qualify. They assume university is for someone else — someone younger, someone with more money, someone who didn\'t drop out. That assumption is wrong, and it\'s costing you.',
+    why_p3:'Here are the three things that stop people. Here\'s why none of them apply to you.',
+    b1_title:'"I don\'t know if I qualify"', b1_body:'If you\'re British, EU with 3+ years, or Ukrainian under a government scheme — you do. Our free check confirms it in 60 seconds.',
+    b2_title:'"I can\'t afford university"', b2_body:'You pay nothing upfront. Student Finance England pays your tuition directly to the university. You never see that money leave your account.',
+    b3_title:'"I don\'t have time to study"', b3_body:'Every programme we offer is flexible. Part-time, online-first, built around people who work. You don\'t quit your job. You study around it.',
+    aud_tag:'Eligibility', aud_h2:'Which one are you?',
+    aud_sub:'Three groups of people have the same right to a government-funded UK degree. Find yours.',
+    aud1_h3:'British Nationals', aud1_p:'UK citizens and those with <strong>Indefinite Leave to Remain</strong> are fully entitled to Student Finance England for any undergraduate or postgraduate course.', aud1_tag:'Fully Eligible',
+    aud2_h3:'EU / European Citizens', aud2_p:'Hold <strong>Pre-Settled or Settled Status</strong> and have lived in the UK for <strong>3+ continuous years</strong>? You qualify for identical funding to any UK student.', aud2_tag:'3+ Years Required',
+    aud3_h3:'Ukrainian Refugees', aud3_p:'Under <strong>Homes for Ukraine</strong> and the <strong>Ukraine Family Scheme</strong>, Ukrainian nationals with permission to stay may access full government student funding.', aud3_tag:'Ukraine Schemes',
+    courses_tag:'Our Programmes', courses_h2:'Pick your degree.',
+    courses_sub:'Accredited UK university degrees. Taught in English. Built around your life.',
+    badge_pop:'Popular',
+    course_foundation:'Foundation Year or Degree', level_foundation:'Foundation',
+    course_masters:'Master &amp; Top-up Degrees', level_masters:'Postgraduate',
+    intl_note:'<strong>International students:</strong> We occasionally help international students too — if you don\'t fit the standard criteria, reach out anyway. We\'ll explore every option.',
+    fp_tag:'What changes', fp_h2:'Imagine that version of yourself.',
+    fp_p1:'The one with the degree. Picture the moment you walk into a room and the letters after your name are already doing half the work.',
+    fp_p2:'<strong>Now picture what happens if you don\'t.</strong> Same ceiling. Same job. Two days, two weeks, two months, two years — the view from the island doesn\'t change unless you start swimming.',
+    fp_l1:'Your CV competes differently', fp_l2:'Your earning ceiling moves up', fp_l3:'Your kids see what\'s possible', fp_l4:'You stop trading time for survival',
+    fp_quote:'"The most successful people have a strong <span>pull</span> toward what they want — and an equally strong <span>push</span> away from what they refuse to stay."',
+    fp_d1:'The government already set the money aside. The only variable is whether you claim it.',
+    fp_d2:'Every week you wait is a week someone else already has that degree. The funding doesn\'t run out — but your weeks do.',
+    fp_d3:'Our job is to get you from the island to the mountain. The eligibility check is step one. It\'s free. It takes 60 seconds.',
+    fund_tag:'Student Finance England', fund_h2:'How the money works.',
+    fund_sub:'The UK government covers your tuition entirely. You repay nothing until you earn over £25,000.',
+    step1_h3:'We apply with you', step1_p:'We walk you through the Student Finance England application. About 30 minutes. We handle the complexity so you don\'t have to.',
+    step2_h3:'Government pays tuition', step2_p:'Student Finance England pays your fees directly to the university. That money never passes through your hands.',
+    step3_h3:'Maintenance loan paid to you', step3_p:'You also receive a maintenance loan for living costs — paid directly to your bank each term.',
+    fund_note:'<strong>Repayments are income-contingent.</strong> You repay 9% of earnings above £25,000 per year. If you earn £25,000 or less — you pay nothing that year. Remaining balance written off after 40 years.',
+    ref_tag:'Referral Programme', ref_h2:'Know someone who qualifies?<br><em>Earn £300.</em>',
+    ref_p:'Refer them to us. If they enrol at university and their Student Finance is confirmed — we pay you £300. No catches. No limits.',
+    ref_how:'How it works:',
+    ref_s1:'Mention us to someone you know who might qualify',
+    ref_s2:'They apply and successfully enrol at university through us',
+    ref_s3:'We transfer £300 to you — straightforward',
+    ref_sub:'Per successfully enrolled student.<br>No cap on referrals.',
+    ref_cta:'→ Refer Someone Now',
+    ref_fine:'Paid after enrolment confirmation and SFE approval. Subject to full referral terms.',
+    apply_tag:'Free Application', apply_h2:'Start here. 5 minutes.',
+    apply_sub:'Tell us about yourself. We\'ll confirm your eligibility and guide every next step.',
+    faq_tag:'Questions', faq_h2:'Straight answers.',
+    faq_q1:'Can\'t I just figure this out myself?', faq_a1:'You could — just like you could do your own taxes or represent yourself in court. But Student Finance England paperwork is notoriously confusing, and one wrong box can delay or deny your funding. We\'ve done this hundreds of times. Our service is free. Why wouldn\'t you use us?',
+    faq_q2:'Do I need to have studied recently?', faq_a2:'No. Many of our students haven\'t been in education for years or decades. Foundation courses exist specifically for that. Your work experience and life skills count more than you think.',
+    faq_q3:'How much will I actually repay?', faq_a3:'9% of whatever you earn above £25,000 per year. If you earn £30,000 — that\'s £37 a month. Earn £25,000 or less? You pay nothing that year. The loan is written off after 40 years.',
+    faq_q4:'Can I work while I study?', faq_a4:'Yes. Every programme we work with is designed for working adults — flexible, part-time, or blended. You do not need to quit your job.',
+    faq_q5:'I\'m EU but only 2 years in the UK — what happens?', faq_a5:'SFE requires 3 years of UK residence. If you\'re close, reach out now — we can tell you precisely when you\'ll qualify.',
+    faq_q6:'I\'m a Ukrainian refugee. Am I definitely eligible?', faq_a6:'If you hold leave to remain under the Homes for Ukraine or Ukraine Family Scheme, SFE recognises your status. We assess every case individually — for free.',
+    faq_q7:'Is Paesani\'s service actually free?', faq_a7:'Yes. We\'re paid by the universities we work with when you enrol — like a mortgage broker paid by the lender, not the buyer. You pay nothing, ever.',
+    cta_h2:'The mountain is there.<br>Start swimming.',
+    cta_p:'Eligibility check is free. Takes 5 minutes. No commitment. No catch.',
+    cta_btn:'Check My Eligibility →',
+    footer_privacy:'Privacy Policy', footer_terms:'Terms of Service', footer_contact:'Contact Us',
+    footer_disc:'Paesani is a trading name of Paesani Consulting Ltd (company no. 17195580), registered at 66 Paul Street, London EC2A 4NA. Independent educational advisory service — not affiliated with the UK Government or Student Finance England.',
+    footer_copy:'© 2025 Paesani Consulting Ltd. All rights reserved. Governed by English law.',
+    mob_cta:'Check My Eligibility — Free'
+  },
+  it: {
+    topbar: '🎯 La verifica dell\'idoneità richiede 60 secondi — ed è completamente gratuita',
+    nav_courses:'Corsi', nav_funding:'Finanziamento', nav_referral:'Porta un Amico', nav_faq:'FAQ', nav_cta:'Candidati Gratis',
+    hero_eyebrow:'Student Finance England · Finanziato dal Governo Britannico',
+    hero_h1:'Hai già i requisiti.<br><em>Devi solo<br>rivendicarli.</em>',
+    hero_sub:'Se sei <strong>britannico</strong>, un <strong>cittadino europeo con 3+ anni nel UK</strong>, o un <strong>rifugiato ucraino</strong> — il governo britannico finanzierà la tua intera istruzione universitaria. Zero costi anticipati. Zero finché non guadagni più di £25.000.',
+    hero_cta:'Verifica la mia Idoneità →', hero_courses:'Esplora i Corsi',
+    chip_british:'Cittadini Britannici', chip_eu:'UE · 3+ Anni', chip_ua:'Rifugiati Ucraini',
+    stat1_label:'Costo anticipato', stat2_label:'Lauree disponibili', stat3_label:'Per referral',
+    why_tag:'La domanda onesta',
+    why_h2:'Perché non l\'hai ancora fatto?',
+    why_p1:'<strong>Non perché non puoi.</strong> Perché nessuno te l\'ha detto.',
+    why_p2:'La maggior parte delle persone nella tua posizione non sa di essere idonea. Pensano che l\'università sia per qualcun altro — qualcuno più giovane, con più soldi. Quell\'assunzione è sbagliata, e ti sta costando cara.',
+    why_p3:'Ecco le tre cose che fermano le persone. Ecco perché nessuna si applica a te.',
+    b1_title:'"Non so se sono idoneo"', b1_body:'Se sei britannico, europeo con 3+ anni, o ucraino in un programma governativo — lo sei. Il nostro check gratuito lo conferma in 60 secondi.',
+    b2_title:'"Non posso permettermi l\'università"', b2_body:'Non paghi nulla in anticipo. Student Finance England paga la retta direttamente all\'università. Quel denaro non passa mai per le tue mani.',
+    b3_title:'"Non ho tempo per studiare"', b3_body:'Ogni programma che offriamo è flessibile. Part-time, online-first, costruito intorno a chi lavora. Non lasci il lavoro. Studi intorno ad esso.',
+    aud_tag:'Idoneità', aud_h2:'Quale sei tu?',
+    aud_sub:'Tre categorie di persone hanno lo stesso diritto a una laurea britannica finanziata dal governo. Trova la tua.',
+    aud1_h3:'Cittadini Britannici', aud1_p:'I cittadini UK e chi ha il <strong>permesso di soggiorno permanente</strong> hanno pieno diritto ai finanziamenti di Student Finance England.', aud1_tag:'Completamente Idonei',
+    aud2_h3:'Cittadini UE / Europei', aud2_p:'Hai il <strong>Pre-Settled o Settled Status</strong> e hai vissuto nel UK per <strong>3+ anni consecutivi</strong>? Hai diritto allo stesso finanziamento degli studenti britannici.', aud2_tag:'Richiesti 3+ Anni',
+    aud3_h3:'Rifugiati Ucraini', aud3_p:'Nell\'ambito di <strong>Homes for Ukraine</strong> e del <strong>Ukraine Family Scheme</strong>, i cittadini ucraini con permesso di soggiorno possono accedere al finanziamento universitario statale.', aud3_tag:'Schemi Ucraina',
+    courses_tag:'I Nostri Programmi', courses_h2:'Scegli la tua laurea.',
+    courses_sub:'Lauree universitarie britanniche accreditate. In inglese. Progettate intorno alla tua vita.',
+    badge_pop:'Popolare',
+    course_foundation:'Foundation Year o Laurea', level_foundation:'Foundation',
+    course_masters:'Master &amp; Lauree Top-up', level_masters:'Post-Laurea',
+    intl_note:'<strong>Studenti internazionali:</strong> Aiutiamo occasionalmente anche studenti internazionali — se non rientri nei criteri standard, contattaci comunque. Esploreremo ogni opzione.',
+    fp_tag:'Cosa cambia', fp_h2:'Immagina quella versione di te.',
+    fp_p1:'Quella con la laurea. Immagina il momento in cui entri in una stanza e le lettere dopo il tuo nome stanno già facendo metà del lavoro.',
+    fp_p2:'<strong>Ora immagina cosa succede se non lo fai.</strong> Stesso soffitto. Stesso lavoro. Due giorni, due settimane, due mesi, due anni — la vista dall\'isola non cambia a meno che tu non cominci a nuotare.',
+    fp_l1:'Il tuo CV compete diversamente', fp_l2:'Il tuo tetto salariale si alza', fp_l3:'I tuoi figli vedono cosa è possibile', fp_l4:'Smetti di scambiare tempo per sopravvivenza',
+    fp_quote:'"Le persone di successo hanno una forte <span>attrazione</span> verso ciò che vogliono — e una spinta altrettanto forte <span>lontano</span> da ciò che rifiutano di restare."',
+    fp_d1:'Il governo ha già messo da parte i soldi. L\'unica variabile è se li rivendichi.',
+    fp_d2:'Ogni settimana che aspetti è una settimana in cui qualcun altro ha già quella laurea.',
+    fp_d3:'Il nostro lavoro è portarti dall\'isola alla montagna. Il check di idoneità è il primo passo. È gratis. Richiede 60 secondi.',
+    fund_tag:'Student Finance England', fund_h2:'Come funzionano i soldi.',
+    fund_sub:'Il governo britannico copre interamente le tue rette. Non rimborsi nulla finché non guadagni più di £25.000.',
+    step1_h3:'Facciamo domanda insieme', step1_p:'Ti guidiamo nell\'applicazione a Student Finance England. Circa 30 minuti. Gestiamo la complessità al posto tuo.',
+    step2_h3:'Il Governo paga le rette', step2_p:'Student Finance England paga le rette direttamente all\'università. Quel denaro non passa mai per le tue mani.',
+    step3_h3:'Prestito mantenimento a te', step3_p:'Ricevi anche un prestito per le spese di vita — pagato direttamente sul tuo conto ogni trimestre.',
+    fund_note:'<strong>I rimborsi sono proporzionali al reddito.</strong> Rimborsi il 9% dei guadagni sopra £25.000 l\'anno. Se guadagni £25.000 o meno — non paghi nulla quell\'anno. Il saldo residuo viene cancellato dopo 40 anni.',
+    ref_tag:'Programma Referral', ref_h2:'Conosci qualcuno che si qualifica?<br><em>Guadagna £300.</em>',
+    ref_p:'Presentacelo. Se si iscrive all\'università e il suo Student Finance è confermato — ti paghiamo £300. Senza condizioni. Senza limiti.',
+    ref_how:'Come funziona:',
+    ref_s1:'Parlaci a qualcuno che conosci che potrebbe qualificarsi',
+    ref_s2:'Si candidano e si iscrivono all\'università tramite noi',
+    ref_s3:'Ti accreditiamo £300 — semplice',
+    ref_sub:'Per ogni studente iscritto con successo.<br>Nessun limite ai referral.',
+    ref_cta:'→ Presenta Qualcuno Ora',
+    ref_fine:'Pagato dopo conferma iscrizione e approvazione SFE. Soggetto ai termini completi di referral.',
+    apply_tag:'Candidatura Gratuita', apply_h2:'Inizia qui. 5 minuti.',
+    apply_sub:'Dicci di te. Confermeremo la tua idoneità e ti guideremo in ogni passo successivo.',
+    faq_tag:'Domande', faq_h2:'Risposte dirette.',
+    faq_q1:'Non posso capirlo da solo?', faq_a1:'Potresti — come potresti fare le tue tasse o rappresentarti in tribunale. Ma la burocrazia di Student Finance England è notoriamente confusa, e una casella sbagliata può ritardare o negare il finanziamento. Noi lo abbiamo fatto centinaia di volte. Il nostro servizio è gratuito. Perché non usarci?',
+    faq_q2:'Devo aver studiato di recente?', faq_a2:'No. Molti dei nostri studenti non sono in formazione da anni o decenni. I corsi Foundation esistono proprio per questo. La tua esperienza lavorativa conta più di quanto pensi.',
+    faq_q3:'Quanto rimborserò davvero?', faq_a3:'Il 9% di ciò che guadagni sopra £25.000 l\'anno. Se guadagni £30.000 — sono £37 al mese. Guadagni £25.000 o meno? Non paghi nulla quell\'anno. Il prestito viene cancellato dopo 40 anni.',
+    faq_q4:'Posso lavorare mentre studio?', faq_a4:'Sì. Ogni programma con cui lavoriamo è progettato per adulti lavoratori — flessibile, part-time o blended. Non devi lasciare il lavoro.',
+    faq_q5:'Sono europeo ma nel UK da solo 2 anni — cosa succede?', faq_a5:'SFE richiede 3 anni di residenza nel UK. Se sei vicino, contattaci ora — ti diremo esattamente quando ti qualificherai.',
+    faq_q6:'Sono un rifugiato ucraino. Sono sicuramente idoneo?', faq_a6:'Se hai il permesso di soggiorno nell\'ambito di Homes for Ukraine o Ukraine Family Scheme, SFE riconosce il tuo status. Valutiamo ogni caso individualmente — gratuitamente.',
+    faq_q7:'Il servizio di Paesani è davvero gratuito?', faq_a7:'Sì. Siamo pagati dalle università con cui lavoriamo quando ti iscrivi — come un mediatore creditizio pagato dalla banca, non dall\'acquirente. Non paghi mai nulla.',
+    cta_h2:'La montagna è lì.<br>Inizia a nuotare.',
+    cta_p:'La verifica di idoneità è gratuita. Richiede 5 minuti. Nessun impegno. Nessun trucco.',
+    cta_btn:'Verifica la mia Idoneità →',
+    footer_privacy:'Informativa sulla Privacy', footer_terms:'Termini di Servizio', footer_contact:'Contattaci',
+    footer_disc:'Paesani è un nome commerciale di Paesani Consulting Ltd (n. 17195580), con sede in 66 Paul Street, Londra EC2A 4NA. Servizio di consulenza educativa indipendente — non affiliato al Governo Britannico o a Student Finance England.',
+    footer_copy:'© 2025 Paesani Consulting Ltd. Tutti i diritti riservati. Soggetto alla legge inglese.',
+    mob_cta:'Verifica la mia Idoneità — Gratis'
+  },
+  uk: {
+    topbar: '🎯 Перевірка права займає 60 секунд — і це повністю безкоштовно',
+    nav_courses:'Курси', nav_funding:'Фінансування', nav_referral:'Реферальна', nav_faq:'Питання', nav_cta:'Подати Безкоштовно',
+    hero_eyebrow:'Student Finance England · Фінансується Урядом Великобританії',
+    hero_h1:'Ви вже маєте право.<br><em>Потрібно лише<br>заявити про це.</em>',
+    hero_sub:'Якщо ви <strong>британець</strong>, <strong>громадянин ЄС із 3+ роками у Великобританії</strong> або <strong>українець-біженець</strong> — уряд профінансує всю вашу університетську освіту. Без початкових витрат. Нічого не повертаєте, доки не заробляєте понад £25 000.',
+    hero_cta:'Перевірити право →', hero_courses:'Переглянути курси',
+    chip_british:'Громадяни Великобританії', chip_eu:'ЄС · 3+ Роки', chip_ua:'Українські Біженці',
+    stat1_label:'Початкові витрати', stat2_label:'Доступних ступенів', stat3_label:'За рекомендацію',
+    why_tag:'Чесне питання',
+    why_h2:'Чому ви ще цього не зробили?',
+    why_p1:'<strong>Не тому що не можете.</strong> Тому що ніхто не сказав вам.',
+    why_p2:'Більшість людей у вашому становищі не знають, що мають право. Вони вважають, що університет — для когось іншого. Ця думка хибна, і вона вам коштує.',
+    why_p3:'Ось три речі, що зупиняють людей. Ось чому жодна з них не стосується вас.',
+    b1_title:'"Я не знаю, чи маю право"', b1_body:'Якщо ви британець, громадянин ЄС із 3+ роками або українець за урядовою схемою — маєте. Наша безкоштовна перевірка підтверджує це за 60 секунд.',
+    b2_title:'"Я не можу дозволити університет"', b2_body:'Ви не платите нічого наперед. Student Finance England платить плату за навчання безпосередньо університету. Ці гроші ніколи не проходять через ваші руки.',
+    b3_title:'"У мене немає часу навчатися"', b3_body:'Усі програми, які ми пропонуємо, гнучкі. Неповний день, онлайн, побудовані навколо людей, які працюють. Ви не кидаєте роботу. Навчаєтесь навколо неї.',
+    aud_tag:'Право на участь', aud_h2:'Хто ви?',
+    aud_sub:'Три категорії людей мають однакове право на університетський ступінь, фінансований урядом Великобританії.',
+    aud1_h3:'Громадяни Великобританії', aud1_p:'Громадяни Великобританії та ті, хто має <strong>безстроковий дозвіл на проживання</strong>, повністю мають право на Student Finance England.', aud1_tag:'Повне право',
+    aud2_h3:'Громадяни ЄС / Євросоюзу', aud2_p:'Маєте <strong>Pre-Settled або Settled Status</strong> і прожили у Великобританії <strong>3+ роки поспіль</strong>? Ви маєте право на таке ж фінансування.', aud2_tag:'Потрібно 3+ Роки',
+    aud3_h3:'Українські біженці', aud3_p:'В рамках <strong>Homes for Ukraine</strong> та <strong>Ukraine Family Scheme</strong>, українські громадяни з дозволом на перебування можуть отримати повне державне фінансування.', aud3_tag:'Схеми для України',
+    courses_tag:'Наші програми', courses_h2:'Оберіть ступінь.',
+    courses_sub:'Акредитовані університетські ступені Великобританії. Англійською. Побудовані навколо вашого життя.',
+    badge_pop:'Популярний',
+    course_foundation:'Foundation рік або ступінь', level_foundation:'Foundation',
+    course_masters:'Магістратура та Top-up', level_masters:'Постдипломна',
+    intl_note:'<strong>Міжнародні студенти:</strong> Ми також інколи допомагаємо міжнародним студентам — якщо не відповідаєте стандартним критеріям, все одно зверніться.',
+    fp_tag:'Що змінюється', fp_h2:'Уявіть ту версію себе.',
+    fp_p1:'Ту, що має ступінь. Уявіть момент, коли ви входите в кімнату і літери після вашого імені вже роблять половину роботи.',
+    fp_p2:'<strong>Тепер уявіть, що буде, якщо ні.</strong> Та сама стеля. Та сама робота. Два дні, два тижні, два місяці, два роки — вигляд з острова не змінюється, поки ви не почнете плисти.',
+    fp_l1:'Ваше резюме конкурує по-іншому', fp_l2:'Ваша стеля заробітку зростає', fp_l3:'Ваші діти бачать, що можливо', fp_l4:'Ви перестаєте обмінювати час на виживання',
+    fp_quote:'"Найуспішніші люди мають сильне <span>прагнення</span> до того, чого хочуть — і рівно таку ж сильну <span>відштовхувальну силу</span> від того, ким відмовляються залишатися."',
+    fp_d1:'Уряд вже відклав гроші. Єдина змінна — чи заявите ви про них.',
+    fp_d2:'Кожен тиждень очікування — це тиждень, коли хтось інший вже має той ступінь.',
+    fp_d3:'Наша робота — перевести вас з острова на гору. Перевірка права — перший крок. Безкоштовно. 60 секунд.',
+    fund_tag:'Student Finance England', fund_h2:'Як працюють гроші.',
+    fund_sub:'Уряд Великобританії повністю покриває ваше навчання. Нічого не повертаєте, доки не заробляєте понад £25 000.',
+    step1_h3:'Подаємо заявку разом', step1_p:'Ведемо вас через заявку на Student Finance England. Близько 30 хвилин. Ми беремо на себе складність.',
+    step2_h3:'Уряд платить за навчання', step2_p:'Student Finance England платить плату безпосередньо університету. Ці гроші ніколи не проходять через ваші руки.',
+    step3_h3:'Позика на проживання вам', step3_p:'Ви також отримуєте позику на витрати на проживання — виплачується безпосередньо на ваш рахунок щотриместру.',
+    fund_note:'<strong>Виплати залежать від доходу.</strong> Повертаєте 9% заробітку понад £25 000 на рік. Заробляєте £25 000 чи менше — нічого не платите того року. Залишок списується через 40 років.',
+    ref_tag:'Реферальна програма', ref_h2:'Знаєте когось, хто має право?<br><em>Заробіть £300.</em>',
+    ref_p:'Порекомендуйте їх нам. Якщо вони зараховуються до університету і підтверджується Student Finance — ми платимо вам £300. Без умов. Без обмежень.',
+    ref_how:'Як це працює:',
+    ref_s1:'Розкажіть про нас комусь, хто може мати право',
+    ref_s2:'Вони подають заявку і зараховуються до університету через нас',
+    ref_s3:'Ми перераховуємо £300 вам — просто',
+    ref_sub:'За кожного успішно зарахованого студента.<br>Без обмежень на кількість рекомендацій.',
+    ref_cta:'→ Порекомендувати Зараз',
+    ref_fine:'Виплачується після підтвердження зарахування та схвалення SFE.',
+    apply_tag:'Безкоштовна заявка', apply_h2:'Починайте тут. 5 хвилин.',
+    apply_sub:'Розкажіть про себе. Ми підтвердимо право та проведемо на кожному кроці.',
+    faq_tag:'Питання', faq_h2:'Прямі відповіді.',
+    faq_q1:'Хіба я не можу розібратися сам?', faq_a1:'Можете — як і самі заповнити декларацію або представляти себе в суді. Але документи Student Finance England надзвичайно складні, і одна помилкова галочка може затримати або відмовити у фінансуванні. Ми робили це сотні разів. Наш сервіс безкоштовний. Чому б не скористатись?',
+    faq_q2:'Чи потрібно нещодавно навчатися?', faq_a2:'Ні. Багато наших студентів не були в освіті роками або десятиліттями. Foundation курси існують саме для цього.',
+    faq_q3:'Скільки я насправді поверну?', faq_a3:'9% від того, що заробляєте понад £25 000 на рік. Заробляєте £30 000 — це £37 на місяць. Заробляєте £25 000 чи менше? Нічого не платите того року. Позика списується через 40 років.',
+    faq_q4:'Чи можу я працювати під час навчання?', faq_a4:'Так. Кожна програма розроблена для працюючих дорослих — гнучка, неповного дня або змішана. Ви не кидаєте роботу.',
+    faq_q5:'Я з ЄС, але лише 2 роки у Великобританії — що далі?', faq_a5:'SFE вимагає 3 роки. Якщо ви близько — зверніться зараз. Ми скажемо вам точно, коли матимете право.',
+    faq_q6:'Я — українець-біженець. Чи точно маю право?', faq_a6:'Якщо маєте дозвіл на перебування за Homes for Ukraine або Ukraine Family Scheme, SFE визнає ваш статус. Оцінюємо кожен випадок індивідуально та безкоштовно.',
+    faq_q7:'Послуга Paesani справді безкоштовна?', faq_a7:'Так. Нам платять університети, коли ви зараховуєтесь — як іпотечний брокер, якому платить банк, а не покупець. Ви не платите нічого, ніколи.',
+    cta_h2:'Гора є.<br>Починайте плисти.',
+    cta_p:'Перевірка права безкоштовна. Займає 5 хвилин. Без зобов\'язань.',
+    cta_btn:'Перевірити право →',
+    footer_privacy:'Політика конфіденційності', footer_terms:'Умови використання', footer_contact:'Зв\'язатися',
+    footer_disc:'Paesani — торгова назва Paesani Consulting Ltd (№ 17195580), зареєстрованої за адресою 66 Paul Street, London EC2A 4NA. Незалежна освітня консультаційна служба — не пов\'язана з урядом Великобританії або Student Finance England.',
+    footer_copy:'© 2025 Paesani Consulting Ltd. Усі права захищені. Регулюється англійським правом.',
+    mob_cta:'Перевірити право — Безкоштовно'
+  }
+};
+
+let currentLang = localStorage.getItem('paesani-lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('paesani-lang', lang);
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn =>
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang)
+  );
+  document.documentElement.lang = lang === 'uk' ? 'uk' : lang === 'it' ? 'it' : 'en';
+}
+
+setLang(currentLang);
+</script>
 </body>
 </html>
