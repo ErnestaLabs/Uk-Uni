@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paesani | Fully Funded UK Degrees</title>
-  <meta name="description" content="Independent advisory guidance for funded UK degree pathways. British nationals, EU citizens 3+ years, Ukrainian refugees." />
+  <title>Student Finance England for EU Citizens, Ukrainian Refugees &amp; British Nationals | Paesani</title>
+  <meta name="description" content="EU national with 3+ years in the UK? Ukrainian refugee? British national? The UK government funds your entire degree — £0 upfront. Paesani handles the Student Finance England application for you, free. Check your eligibility in 60 seconds." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://paesani.co.uk" />
   <link rel="icon" href="logo.png" type="image/png" />
   <meta name="theme-color" content="#f8f5ef" />
-  <meta property="og:title" content="Paesani | Fully Funded UK Degrees" />
-  <meta property="og:description" content="British, EU national (3+ years), or Ukrainian refugee? The UK government funds your entire degree. Zero upfront. We handle the paperwork." />
+  <meta property="og:title" content="Student Finance England for EU Citizens, Ukrainian Refugees &amp; British Nationals | Paesani" />
+  <meta property="og:description" content="EU national with 3+ years in the UK? Ukrainian refugee? British national? The UK government funds your entire degree — £0 upfront. Paesani handles the application for you, free." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paesani.co.uk" />
   <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Student Finance England for EU Citizens, Ukrainian Refugees &amp; British Nationals | Paesani" />
+  <meta name="twitter:description" content="EU national with 3+ years in the UK? Ukrainian refugee? British national? £0 upfront. Paesani handles your SFE application — free." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" />
@@ -789,6 +797,22 @@
     }
     .legal.show { opacity: 1; transform: none; }
 
+    /* ── FAQ ── */
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 2px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .faq-item { background: var(--card); padding: 28px 30px; border-bottom: 2px solid var(--line); }
+    .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+    .faq-q { font-family: "Bebas Neue", sans-serif; font-size: 1.15rem; letter-spacing: .04em; color: var(--ink); margin: 0 0 10px; line-height: 1.2; }
+    .faq-a { font-size: .88rem; color: var(--charcoal); line-height: 1.7; margin: 0; opacity: .8; }
+    .faq-a a { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+    .faq-item { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+    .faq-item.show { opacity: 1; transform: none; }
+
+    /* ── WHATSAPP FAB ── */
+    .wa-fab { position: fixed; bottom: 24px; right: 24px; z-index: 99; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.45); transition: transform .2s ease, box-shadow .2s ease; text-decoration: none; }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
+    .wa-fab svg { width: 28px; height: 28px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1020px) {
       .hero-shell { grid-template-columns: 1fr; }
@@ -798,7 +822,7 @@
       .ref-form-grid { grid-template-columns: 1fr; }
       .ref-panel { position: static; }
       .guide-grid { grid-template-columns: 1fr; }
-      .guide-sticky { position: static; }
+      .guide-sticky { position: static; order: -1; }
       .image-ribbon { grid-template-columns: 1fr 1fr; }
       .aud-strip { grid-template-columns: 1fr; }
       .aud-item { border-right: none; border-bottom: 2px solid var(--line); }
@@ -832,6 +856,11 @@
       .ref-panel { padding: 24px 20px; }
       .ref-panel-amount { font-size: 3.8rem; }
       .visual-card { padding: 10px 14px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-item:nth-last-child(-n+2) { border-bottom: 2px solid var(--line); }
+      .faq-item:last-child { border-bottom: none; }
+      .wa-fab { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+      .wa-fab svg { width: 24px; height: 24px; }
     }
   </style>
 </head>
@@ -925,7 +954,7 @@
     <!-- WHO QUALIFIES -->
     <section class="section" id="who" style="padding-top: 20px;">
       <div class="container">
-        <h2 data-i18n="whoTitle">Who qualifies?</h2>
+        <h2 data-i18n="whoTitle">Who Qualifies for a Government-Funded UK Degree?</h2>
         <p class="sub" data-i18n="whoSub">Three groups of people have the same right to a fully government-funded UK degree.</p>
         <div class="aud-strip">
           <div class="aud-item">
@@ -959,15 +988,15 @@
         </p>
         <div class="image-ribbon">
           <figure class="reveal-media">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" alt="Students collaborating" loading="lazy" decoding="async" />
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" alt="Students collaborating" loading="lazy" decoding="async" width="1000" height="667" />
             <figcaption data-i18n="g1">Application workshops</figcaption>
           </figure>
           <figure class="reveal-media">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Advisory session" loading="lazy" decoding="async" />
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Advisory session" loading="lazy" decoding="async" width="900" height="600" />
             <figcaption data-i18n="g2">Advisor guidance</figcaption>
           </figure>
           <figure class="reveal-media">
-            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Student studying" loading="lazy" decoding="async" />
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="Student studying" loading="lazy" decoding="async" width="900" height="600" />
             <figcaption data-i18n="g3">Prepared submissions</figcaption>
           </figure>
         </div>
@@ -977,7 +1006,7 @@
     <!-- WHAT WE DELIVER -->
     <section class="section" id="support">
       <div class="container">
-        <h2 data-i18n="supportTitle">What we deliver</h2>
+        <h2 data-i18n="supportTitle">Student Finance Application Support — What We Deliver</h2>
         <p class="sub" data-i18n="supportSub">We support your application from first check to final submission. We are not a university — we are your guide through the system.</p>
         <div class="cards">
           <article class="card">
@@ -1003,7 +1032,7 @@
     <!-- JOURNEY -->
     <section class="section" id="journey">
       <div class="container">
-        <h2 data-i18n="journeyTitle">Your journey, step by step</h2>
+        <h2 data-i18n="journeyTitle">Your Student Finance Journey, Step by Step</h2>
         <p class="sub" data-i18n="journeySub">No jargon. No confusion. Clear guidance from your first question to your first lecture.</p>
         <div class="journey">
           <article class="step">
@@ -1042,7 +1071,7 @@
     <!-- FORMS + DIY GUIDE -->
     <section class="section" id="forms" style="padding-top: 0;">
       <div class="container">
-        <h2 data-i18n="formsTitle">Apply or refer</h2>
+        <h2 data-i18n="formsTitle">Apply for Free Student Finance Guidance</h2>
         <p class="sub" data-i18n="formsSub">Two pathways. Both free. Both handled by our team.</p>
 
         <!-- DIY GUIDE + APPLY FORM -->
@@ -1163,6 +1192,40 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <h2>Common Questions</h2>
+        <p class="sub">Everything you should know before you start.</p>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <p class="faq-q">Is this actually free? How do you make money?</p>
+            <p class="faq-a">Yes — completely free for students. We earn a placement fee from the universities when you enrol. This means our incentive is fully aligned with yours: we only succeed when you successfully start your funded degree. You never pay us anything, at any stage.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">What if I don't qualify?</p>
+            <p class="faq-a">We tell you straight away. We run a full eligibility check before any paperwork begins. If you don't qualify — due to residency gaps, prior study, or visa status — we explain exactly why and what (if anything) you can do to qualify in the future. No wasted time.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">How is this different from applying myself?</p>
+            <p class="faq-a">The DIY guide on this page lists 11 steps and 8 common failure points. Self-submitters regularly face rejected evidence, suspended applications, and processing delays of 10–14 weeks. We submit correctly the first time, liaise with SFE directly, and handle anything that goes wrong — so you don't have to spend hours on hold.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">What documents do I need to get started?</p>
+            <p class="faq-a">At minimum: a valid passport or national ID card, your National Insurance number, and a university offer letter. EU nationals also need a UKVI share code and bank statements covering your UK residence. Ukrainian refugees need their Permission to Stay letter. We'll send you a personalised checklist once you apply.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">How long does the whole process take?</p>
+            <p class="faq-a">A correctly submitted application takes 6–8 weeks for British nationals and 10–14 weeks for EU citizens (SFE runs a residence check). We submit early to avoid delays. Your first tuition payment goes directly to the university; your first maintenance payment arrives within days of enrolment confirmation.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-q">Is my data safe? Who sees my documents?</p>
+            <p class="faq-a">Your documents are handled only by your assigned advisor and submitted directly to Student Finance England via the official SFE portal. We do not store copies beyond what SFE requires. See our <a href="privacy.html">Privacy Policy</a> for full details. Paesani Consulting Ltd is registered in England &amp; Wales (no. 17195580).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- LEGAL -->
     <section class="section" id="compliance" style="padding-top: 0;">
       <div class="container">
@@ -1180,6 +1243,11 @@
       </div>
     </section>
   </main>
+
+  <!-- WHATSAPP FAB -->
+  <a href="https://wa.me/447438202623" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat with Paesani on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <!-- FOOTER -->
   <footer>
@@ -1201,6 +1269,9 @@
           </a>
           <a href="https://www.tiktok.com/@paesani.co.uk" target="_blank" rel="noopener" aria-label="Paesani on TikTok">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.12 8.12 0 004.74 1.52V6.73a4.85 4.85 0 01-.97-.04z"/></svg>
+          </a>
+          <a href="https://wa.me/447438202623" target="_blank" rel="noopener" aria-label="Chat with Paesani on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </a>
         </div>
       </div>
@@ -1232,25 +1303,25 @@
         bullet2:"One advisor assigned to your case, start to finish.",
         bullet3:"Flexible degrees — study around your job and family.",
         metricUpfront:"Upfront cost to study", metricDegrees:"Accredited degrees available",
-        whoTitle:"Who qualifies?", whoSub:"Three groups of people have the same right to a fully government-funded UK degree.",
+        whoTitle:"Who Qualifies for a Government-Funded UK Degree?", whoSub:"Three groups of people have the same right to a fully government-funded UK degree.",
         aud1Title:"British Nationals", aud1Desc:"UK citizens and those with Indefinite Leave to Remain are fully entitled to Student Finance England for any undergraduate or postgraduate course.", aud1Badge:"Fully eligible",
         aud2Title:"EU Citizens · 3+ Years", aud2Desc:"Pre-Settled or Settled Status and 3+ continuous years in the UK? You qualify for identical funding to any UK student — regardless of nationality.", aud2Badge:"3 years required",
         aud3Title:"Ukrainian Refugees", aud3Desc:"Under Homes for Ukraine and the Ukraine Family Scheme, Ukrainian nationals with permission to stay may access full government student funding.", aud3Badge:"Ukraine schemes",
         galleryLabel:"Moments from student journeys and advisory sessions.",
         g1:"Application workshops", g2:"Advisor guidance", g3:"Prepared submissions",
-        supportTitle:"What we deliver", supportSub:"We support your application from first check to final submission. We are not a university — we are your guide through the system.",
+        supportTitle:"Student Finance Application Support — What We Deliver", supportSub:"We support your application from first check to final submission. We are not a university — we are your guide through the system.",
         c1t:"Eligibility check", c1d:"Know in 60 seconds whether you qualify for government funding. No guesswork, no wasted time.",
         c2t:"Application support", c2d:"We walk you through every form. One wrong box on SFE paperwork can delay your funding — we make sure that doesn't happen.",
         c3t:"Progress coordination", c3d:"Clear checkpoints from pre-assessment through to enrolment confirmation. You always know where you stand.",
         c4t:"Multilingual support", c4d:"We speak your language. English, Italian, Ukrainian, Spanish, French, Romanian, German and more.",
-        journeyTitle:"Your journey, step by step", journeySub:"No jargon. No confusion. Clear guidance from your first question to your first lecture.",
+        journeyTitle:"Your Student Finance Journey, Step by Step", journeySub:"No jargon. No confusion. Clear guidance from your first question to your first lecture.",
         s1:"Complete your eligibility check — takes 60 seconds. We confirm whether you qualify for Student Finance England funding.",
         s2:"We assign you an advisor and guide you through the Student Finance England application. About 30 minutes. We handle the complexity.",
         s3:"SFE pays your tuition directly to the university. You receive a maintenance loan for living costs each term.",
         s4:"You enrol. You study around your life — part-time, flexible, online-first. You don't quit your job. You get your degree.",
         refCalloutTitle:"Know someone who qualifies?<br><em>Earn £300.</em>",
         refCalloutDesc:"Refer them. If they enrol and SFE confirms their funding — we transfer £300 to you. No cap on how many you refer.",
-        formsTitle:"Apply or refer", formsSub:"Two pathways. Both free. Both handled by our team.",
+        formsTitle:"Apply for Free Student Finance Guidance", formsSub:"Two pathways. Both free. Both handled by our team.",
         appTitle:"Student application", appDesc:"Ready to check your eligibility and start your degree? Begin here.",
         refTitle:"Refer someone", refDesc:"Know someone who qualifies? Submit their details and earn £300 when they enrol.",
         legalTitle:"Legal & privacy", legalSub:"Review our policy pages before sharing personal data with us.",
@@ -1862,6 +1933,12 @@
     const diyCard = document.querySelector('.diy-card');
     if (diyCard) ioLarge.observe(diyCard);
 
+    // FAQ items
+    document.querySelectorAll('.faq-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 60}ms`;
+      io.observe(el);
+    });
+
     // Legal section
     const legalEl = document.querySelector('.legal');
     if (legalEl) io.observe(legalEl);
@@ -1870,22 +1947,88 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Paesani Consulting Ltd",
-    "description": "Independent advisory service helping British nationals, EU citizens, and Ukrainian refugees access fully government-funded UK university degrees through Student Finance England.",
-    "url": "https://paesani.co.uk",
-    "email": "hello@paesani.co.uk",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "66 Paul Street",
-      "addressLocality": "London",
-      "postalCode": "EC2A 4NA",
-      "addressCountry": "GB"
-    },
-    "areaServed": "GB",
-    "serviceType": "Student Finance Advisory",
-    "knowsLanguage": ["en","it","uk","es","de","fr","ro","pl","pt","nl"],
-    "identifier": { "@type": "PropertyValue", "name": "Companies House", "value": "17195580" }
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://paesani.co.uk/#organisation",
+        "name": "Paesani Consulting Ltd",
+        "description": "Independent advisory service helping British nationals, EU citizens with 3+ years UK residence, and Ukrainian refugees access fully government-funded UK university degrees through Student Finance England. Free service — no upfront cost.",
+        "url": "https://paesani.co.uk",
+        "email": "hello@paesani.co.uk",
+        "telephone": "+447438202623",
+        "logo": "https://paesani.co.uk/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "66 Paul Street",
+          "addressLocality": "London",
+          "postalCode": "EC2A 4NA",
+          "addressCountry": "GB"
+        },
+        "areaServed": "GB",
+        "serviceType": "Student Finance England Application Advisory",
+        "knowsLanguage": ["en","it","uk","es","de","fr","ro","pl","pt","nl"],
+        "sameAs": [
+          "https://www.instagram.com/paesani.co.uk/",
+          "https://www.tiktok.com/@paesani.co.uk",
+          "https://find-and-update.company-information.service.gov.uk/company/17195580"
+        ],
+        "identifier": { "@type": "PropertyValue", "name": "Companies House", "value": "17195580" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Paesani's Student Finance advisory service actually free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely free for students. Paesani earns a placement fee from universities when you enrol. Our incentive is aligned with yours: we only succeed when you successfully start your funded degree." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do EU citizens qualify for Student Finance England?",
+            "acceptedAnswer": { "@type": "Answer", "text": "EU and EEA nationals with pre-settled or settled status who have been ordinarily resident in the UK for 3 continuous years immediately before their course start date qualify for the same Student Finance England funding as UK nationals — including tuition fee loans and maintenance loans." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Ukrainian refugees get UK student funding?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Ukrainian nationals admitted under the Homes for Ukraine scheme, the Ukraine Family Scheme, or the Ukraine Permission to Stay scheme with permission to stay in the UK are eligible for Student Finance England funding, including tuition fee and maintenance loans." }
+          },
+          {
+            "@type": "Question",
+            "name": "What documents do I need for a Student Finance England application?",
+            "acceptedAnswer": { "@type": "Answer", "text": "All applicants need a valid passport or national identity card (EU/EEA nationals with settled or pre-settled status may use their home country national ID card), National Insurance number, UK bank account, and university offer letter. EU nationals additionally need a UKVI share code and evidence of 3 years continuous UK residence. Ukrainian refugees need their Permission to Stay letter." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a Student Finance England application take to process?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Standard applications for British nationals take 6–8 weeks. EU national applications that trigger a residence questionnaire typically take 10–14 weeks. SFE processing times cannot be accelerated, but submitting a complete, correct application avoids additional delays." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I don't qualify for Student Finance England?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Paesani runs a full eligibility check before any paperwork begins. If you don't qualify — due to residency gaps, prior study at degree level, or visa status — we explain exactly why and what you can do. No wasted time, no cost." }
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Apply for Student Finance England as an EU Citizen or Ukrainian Refugee",
+        "description": "Step-by-step guide to applying for Student Finance England (SFE) tuition fee and maintenance loans in the UK, covering eligibility, documents, the online application, and payment.",
+        "totalTime": "PT8W",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Confirm your eligibility", "text": "Verify nationality/immigration status, 3-year continuous UK residence (EU nationals), and no disqualifying prior higher education before opening an SFE account." },
+          { "@type": "HowToStep", "position": 2, "name": "Create your SFE account", "text": "Register at studentfinance.slc.co.uk with your date of birth, National Insurance number, and valid identity document. EU/EEA nationals with settled or pre-settled status may use their home country national ID card instead of a passport." },
+          { "@type": "HowToStep", "position": 3, "name": "Confirm your course is eligible", "text": "Ensure your course is a designated first degree (BA, BSc, LLB), Foundation Degree, or HND/HNC at a registered provider, with at least 25% intensity if part-time, and is not an equivalent or lower qualification to a degree you already hold." },
+          { "@type": "HowToStep", "position": 4, "name": "Gather your documents", "text": "Collect passport or national ID card, National Insurance number, UK bank account details, university offer letter, and full prior higher education history. EU nationals need UKVI share code and residence evidence. Ukrainian refugees need Permission to Stay letter." },
+          { "@type": "HowToStep", "position": 5, "name": "Complete the online application", "text": "Submit the 8-section SFE online application covering personal details, course, residence, prior study, income, evidence uploads, bank details, and legal declaration. Allow 60–90 minutes and complete each section in one sitting." },
+          { "@type": "HowToStep", "position": 6, "name": "Income assessment", "text": "Provide P60, HMRC self-assessment, or accountant's accounts for the previous tax year to determine your maintenance loan amount." },
+          { "@type": "HowToStep", "position": 7, "name": "Declare all previous higher education", "text": "Legally declare every higher education course ever enrolled on, including dropped or overseas degrees. Non-declaration is a criminal offence." },
+          { "@type": "HowToStep", "position": 8, "name": "Wait for processing and respond to questionnaires", "text": "Standard processing takes 6–14 weeks. Respond to any SFE residence questionnaire within 14 days to avoid suspension." },
+          { "@type": "HowToStep", "position": 9, "name": "Confirm university enrolment with SFE", "text": "SFE approval does not release funds automatically. Your university must separately confirm your enrolment in SFE's system." },
+          { "@type": "HowToStep", "position": 10, "name": "Receive your payments", "text": "Tuition fee loan goes directly to your university in three annual instalments. Maintenance loan arrives in your UK bank account within 3–5 working days of enrolment confirmation." },
+          { "@type": "HowToStep", "position": 11, "name": "Understand your repayment terms", "text": "Loans from August 2023 are Plan 5: repay 9% of income above £25,000 per year via PAYE. Interest accrues at RPI. Written off after 40 years." }
+        ]
+      }
+    ]
   }
   </script>
 </body>
